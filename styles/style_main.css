@@ -1,0 +1,272 @@
+  /*
+	::selection{ background-color: #E13300; color: white; }
+	::moz-selection{ background-color: #E13300; color: white; }
+	::webkit-selection{ background-color: #E13300; color: white; }
+  */
+	body {
+		background: -webkit-linear-gradient(top, black 20px, #EDEDED 100%) no-repeat;
+    background-color: #ececec;
+    color: #444;
+    height: auto;
+    font: 13px/20px "normal Helvetica", "Arial", sans-serif;
+   /* margin-left: 160px;
+    margin-right: 160px;
+    margin-top: 35px;      */
+    margin: 35px 0% 0px;
+      	
+	}
+  #site{
+    width: 1061px;
+    overflow-x: hidden;
+    margin-left: auto ;
+    margin-right: auto ;
+  
+  }
+	a {
+		color: #003399;
+		background-color: transparent;
+		font-weight: normal;
+	}
+
+	h1 {
+		color: #c3ccda ;
+		background-color: transparent;
+		font-size: 20px;
+		font-weight: normal;
+		margin: 0 0 14px 0;
+		padding: 14px 15px 10px 15px;
+	}
+  header {
+	  background-image: url('');
+  	background-repeat: no-repeat;
+  	background-position: right top; 
+  	
+  	height: 80px;
+  }
+  #top_links{
+    color: #d1d7db;
+    float: right;
+    word-spacing: 7px;
+    margin-right: 10px;
+  }
+  #top_links a {
+    color: #d1d7db;
+    margin-left: 10px; 
+    font-size: 14px;
+    cursor: pointer; 
+  }
+  #top_links #login_pop{
+    background: -webkit-linear-gradient(top, #FAFAFA 0px, #EDEDED 100%) transparent;
+    background: -moz-linear-gradient(top, #FAFAFA 0px, #EDEDED 100%) transparent;
+    border-radius: 4px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.506);
+    height: 165px;
+    position: absolute;
+    width: 340px; 
+    padding: 10px;
+    visibility: hidden;
+    margin: -5px 0px 0px -220px;  
+    z-index: 1;
+  }
+  #top_links #login_pop p{
+    color: #A6A6A6; 
+    font-size: 16px;
+    text-transform: uppercase;
+    border-bottom: 1px solid silver; 
+    margin-top: 5px; 
+  }
+  
+  #top_links #login_pop span{
+    color: #A6A6A6; 
+    display: block;
+    margin-top: 2px;
+    
+  }
+  #top_links #login_pop input[type=submit]{ 
+    background-color: black;
+    display: block;
+    border: none;
+    margin-top: 8px;
+    width: 70px;
+    color: #d1d6e0;  
+  }
+  .close_pop{
+    background: url("http://hudobniny.g6.cz/media/img_web/close_button_mini.png") 0px 0px no-repeat transparent;
+    position: absolute;
+    right: 1px;
+    
+  }
+  
+  header a{
+    color: #a7a4a4;
+    text-decoration: none;
+  } 
+	nav {
+	 font-size: 120%;
+   margin-left:10px;
+  }
+  nav a {
+	 color: #d1d7db;
+	 font-weight: bold;
+	 text-decoration: none;
+	 padding: 0 0.9em;
+  }
+  nav a:hover {	
+  	background: #585656;
+    }
+  section {
+  background-color:white;
+		margin: 10px;
+  	-webkit-box-shadow: 0 0 8px #D0D0D0;	
+    height: 600px; 
+    padding: 15px;
+    
+	}
+  section h2 {
+    color: #666666 ;
+    font-size: 17px;
+  	font-weight: bold;
+    
+
+  }
+  
+  #new_prod_frame{
+   height: 325px;
+   overflow: hidden;
+  }
+  
+  #new_prod_frame ul{
+    height: 0px;
+    left: 0px;
+    margin: 0px 15px 0px 15px;
+    overflow: visible;
+    padding: 0px;
+    position: relative;
+    width: auto; /*2800%;*/
+    }
+    
+  #new_prod_frame li{
+    float: left;
+    list-style: none outside none;
+    position: relative;
+    padding: 8px;
+    -webkit-box-shadow: 0 0 8px #D0D0D0;
+    margin-left: 10px;
+    margin-top: 1%;
+    width: 168px;
+   
+    }
+  
+  #new_prod_frame img{
+    display: block;
+    margin: auto;
+  }
+  #new_prod_frame .item_content{
+    margin: 25px 0px 10px 0px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #new_prod_frame p{
+    font-size: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  #new_prod_frame .item_else{
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  #new_prod_frame li span{
+    font-weight: bold;
+    font-size: 14px;
+    }
+  
+  #new_prod_frame li input[type=button]{
+    background: url("http://hudobniny.g6.cz/media/img_web/cart.png") center no-repeat #000000;
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-top: 1px;
+    border: none;
+    width: 25px;
+    }
+  
+  #new_prod_frame .new_prod_arrow_left{
+    background: url("http://hudobniny.g6.cz/media/img_web/slider_arrows.png") no-repeat transparent; 
+    display: block;
+    height: 55px;
+    position: relative;
+    float: left;
+    text-indent: -9999px; 
+    width: 15px;
+    margin-top: 7%;
+  }
+  
+  #new_prod_frame .new_prod_arrow_right{
+    background: url("http://hudobniny.g6.cz/media/img_web/slider_arrows.png") 100% 0% no-repeat transparent;
+    display: block;
+    height: 55px;
+    position: relative;
+    float: right;
+    text-indent: -9999px;
+    width: 15px;
+    margin-top: 7%;
+      
+  }
+  
+
+  #body{
+    margin: 0 15px 0 15px;
+    display: block;
+	}
+	
+	p.footer{
+		text-align: right;
+		font-size: 11px;
+		border-top: 1px solid #D0D0D0;
+		line-height: 32px;
+		padding: 0 10px 0 10px;
+		margin: 20px 0 0 0;
+    
+	}
+  
+  .warning_message_login{
+    text-align: center;
+    display: block;
+    font-size: 1.17em;
+    font-weight: 700;  
+    margin-top: 1em;
+  }
+  
+  .center{
+    margin-left: auto ;
+    margin-right: auto ;
+  }
+	.oznamy, .zoznam{
+    visibility: hidden;
+  }
+	
+ #notification{
+  
+   color: green;
+   font-size: 0.9em;
+   font-weight: bold;
+   margin-bottom: 5px;
+   word-spacing: 0px;
+   margin-bottom: -30px;
+   margin-top: -5px;
+   
+}
+
+ #warning{
+  
+   color: red;
+   font-size: 0.9em;
+   font-weight: bold;
+   margin-bottom: 5px;
+   word-spacing: 0px;
+   margin-bottom: -30px;
+   
+}

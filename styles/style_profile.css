@@ -1,0 +1,78 @@
+#data_frame, aside{
+  padding: 15px;
+}
+
+#data_frame{
+  /*border:5px solid red;   */
+  width: 75%;
+  float: right; 
+  
+}
+
+#data_frame h2{
+  margin-bottom: 10px;
+  border-bottom: 1px solid silver;  
+}
+
+#data_frame #users_info{
+  width: 600px;
+  text-align: center;  
+  margin-left: 16%;
+
+}
+#data_frame #change_pass{
+  width: 420px;
+  text-align: center;
+  margin-top: 35px;
+  margin-left: 14%;	
+}
+
+#data_frame #change_pass a{
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+#data_frame td{
+  padding: 2px 0px;
+}
+#data_frame td a{
+  margin-right: 10px;  
+}
+
+#data_frame td a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+#userDataChanger{
+  display:none;
+  
+}
+
+#data_frame .info{
+ display: none;
+ 
+ width: 270px;
+}
+
+#data_frame .pass{
+ display: inline; 
+ width: 135px;
+}
+
+
+aside{
+ /* border:5px solid blue;   */
+  width: 17%;
+  float: left;
+  height: 95%;
+  text-align: center;
+}
+
+aside img{
+  border: 1px solid black;
+  margin-top: 1%;
+  width: 150px;
+  
+}
