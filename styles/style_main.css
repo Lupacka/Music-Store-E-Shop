@@ -4,7 +4,8 @@
 	::webkit-selection{ background-color: #E13300; color: white; }
   */
 	body {
-		background: -webkit-linear-gradient(top, black 20px, #EDEDED 100%) no-repeat;
+		background: -webkit-linear-gradient(top, black 0px, #EDEDED 50%) no-repeat;
+    background: -moz-linear-gradient(top, black 0px, #EDEDED 50%) no-repeat;
     background-color: #ececec;
     color: #444;
     height: auto;
