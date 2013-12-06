@@ -52,15 +52,19 @@
   <aside>
     <p>Profile picture: </p>
     <?php
+    
     foreach($user_info as $row){
-      echo "<img src='". $row->img_url ."' alt='". $row->name ."'>"; 
+      if(file_exists('./media/users_photo/'.$this->session->userdata('id').'.jpg'))
+        echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";
+      else
+        echo "<img src='". base_url()."media/blank_person.jpg' alt='". $row->name ."'>"; 
     ?> 
     <br>
     <?php
-   // echo form_open_multipart('/upload_profile_img');
-   // echo form_upload('img');
-   // echo form_submit('submit', 'Send');
-   // echo form_close();
+    echo form_open_multipart('/upload_profile_img');
+    echo form_upload('img','',"style='width:78px; margin-right: 19px;'");
+    echo form_submit('submit', 'Send',"style='display: block; margin: 6px 0 0px 50px;'");
+    echo form_close();
     ?>
   </aside> 
   <div id="data_frame">

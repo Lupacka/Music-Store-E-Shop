@@ -29,8 +29,9 @@ class profile extends CI_Controller {
     $this->load->helper('url');
     $this->load->library('upload.php');
     
-    $config['upload_path'] = 'http://hudobniny.g6.cz/media';
+    $config['upload_path'] = './media/users_photo';
 		$config['allowed_types'] = 'gif|jpg|png';
+    $config['overwrite'] = TRUE;
     $config['file_name'] = $this->session->userdata('id');
 		$config['max_size']	= '100';
 		$config['max_width']  = '400';
@@ -38,11 +39,20 @@ class profile extends CI_Controller {
     
     $this->upload->initialize($config); 
     $this->upload->set_allowed_types('*');   
-    if (!$this->upload->do_upload('img')) 
-			$this->profile($this->upload->display_errors()); 
+    if ($this->upload->do_upload('img')){
+      $this->load->model('profile_mod');
+      $this->profile_mod->up_db_photo();
+      $this->profile('You have succefuly change your profle photo!');
+    }else
+			$this->profile($this->upload->display_errors());
+       
    // echo display_errors();
    // $this->load->model('profile');
    // $this->profile->up_db_photo();
+  }
+  
+  function image_resize(){
+    
   }
   
   function update_profile(){
