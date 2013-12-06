@@ -40,10 +40,10 @@
       return false; 
     }
   
-    function up_db_photo(){
+    function up_db_photo($atr){
       $this->load->helper('url');
       $this->db->where('id', $this->session->userdata('id'));
-      $this->db->update('users_info', array( 'img_url'=> base_url().'media/users_photo/'. $this->session->userdata('id').'.jpg'));
+      $this->db->update('users_info', array( 'img_url'=> base_url().'media/users_photo/'. $this->session->userdata('id').$atr));
     }
 }
 ?>

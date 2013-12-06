@@ -27,21 +27,24 @@ class profile extends CI_Controller {
   }
   function upload_profile_img(){
     $this->load->helper('url');
-    $this->load->library('upload.php');
+    $this->load->library('upload');
     
     $config['upload_path'] = './media/users_photo';
 		$config['allowed_types'] = 'gif|jpg|png';
     $config['overwrite'] = TRUE;
     $config['file_name'] = $this->session->userdata('id');
-		$config['max_size']	= '100';
-		$config['max_width']  = '400';
-		$config['max_height']  = '400';
-    
+		$config['max_size']	= '500';
+		$config['max_width']  = '3000';
+		$config['max_height']  = '3000';
+        
     $this->upload->initialize($config); 
     $this->upload->set_allowed_types('*');   
     if ($this->upload->do_upload('img')){
       $this->load->model('profile_mod');
-      $this->profile_mod->up_db_photo();
+      $data = $this->upload->data();
+      
+      $this->profile_mod->up_db_photo($data['file_ext']);
+      $this->image_resize($data['file_ext']);
       $this->profile('You have succefuly change your profle photo!');
     }else
 			$this->profile($this->upload->display_errors());
@@ -51,8 +54,17 @@ class profile extends CI_Controller {
    // $this->profile->up_db_photo();
   }
   
-  function image_resize(){
-    
+  function image_resize($atr){
+    $config['image_library'] = 'gd2';
+    $config['source_image'] = './media/users_photo/'. $this->session->userdata('id') . $atr;
+    //$config['create_thumb'] = TRUE;
+    $config['maintain_ratio'] = TRUE;
+    $config['width'] = 150;
+    $config['height'] = 150;
+  
+    $this->load->library('image_lib', $config); 
+   
+    $this->image_lib->resize();  
   }
   
   function update_profile(){

@@ -50,7 +50,7 @@
   <section>
   <?php if($this->session->userdata('loged') == 1){?>
   <aside>
-    <p>Profile picture: </p>
+    <h2><?php echo $title?> picture: </h2>
     <?php
     
     foreach($user_info as $row){
@@ -66,6 +66,7 @@
     echo form_submit('submit', 'Send',"style='display: block; margin: 6px 0 0px 50px;'");
     echo form_close();
     ?>
+  
   </aside> 
   <div id="data_frame">
     <h2><?php echo $title;?></h2>

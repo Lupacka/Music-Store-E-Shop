@@ -70,9 +70,9 @@ aside{
   text-align: center;
 }
 
-aside img{
+
+aside img {
   border: 1px solid black;
-  margin-top: 1%;
   width: 150px;
-  
+  height: 150px;
 }
