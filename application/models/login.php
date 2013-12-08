@@ -69,8 +69,10 @@ hudobniny.cz team ");
         $id = $val->id;
       }
       $this->load->model('profile_mod');
-      if($this->profile_mod->change_pass($new_pass, $id))
+      if($this->profile_mod->change_pass($new_pass, $id)){
         $this->send_email_newpass($new_pass);
+        return true;
+        }
     
     }
 

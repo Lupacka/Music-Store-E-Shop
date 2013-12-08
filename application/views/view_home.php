@@ -45,8 +45,10 @@
     <h1>hudobniny.cz</h1>
   </header>
   <nav>
-    <a href="">Home</a>
-  
+    <?php
+      echo anchor('/home','Home');
+      echo anchor('/about','About');
+    ?>
   </nav>
   
   <section>

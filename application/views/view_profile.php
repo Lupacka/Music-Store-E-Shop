@@ -44,7 +44,10 @@
     <h1>hudobniny.cz</h1>
   </header>
   <nav>
-    <a href="home">Home</a>
+    <?php
+      echo anchor('/home','Home');
+      echo anchor('/about','About');
+    ?>
   </nav>
   
   <section>
@@ -57,20 +60,26 @@
       if(file_exists('./media/users_photo/'.$this->session->userdata('id').'.jpg'))
         echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";
       else
-        echo "<img src='". base_url()."media/blank_person.jpg' alt='". $row->name ."'>"; 
+        echo "<img src='./media/blank_person.jpg' alt='". $row->name ."'>"; 
     ?> 
     <br>
     <?php
     echo form_open_multipart('/upload_profile_img');
-    echo form_upload('img','',"style='width:78px; margin-right: 19px;'");
-    echo form_submit('submit', 'Send',"style='display: block; margin: 6px 0 0px 50px;'");
+    echo form_upload('img','',"onchange='checkUpload()' id='up_img' style='width:78px; margin-right: 19px;'");
+    echo form_submit('submit', 'Send',"id='up_img_but' style='display: block; margin: 6px 0 0px 50px;' disabled");
     echo form_close();
     ?>
   
   </aside> 
   <div id="data_frame">
     <h2><?php echo $title;?></h2>
-    <?php echo "<p id='notification'>".$notify . "<p>"; echo validation_errors("<p id='warning' style='margin-top:35px; margin-bottom:0px;'>","</p>")?>
+    <?php
+    $notify = ""; 
+    if($this->session->userdata('notify'))
+      $notify = $this->session->userdata('notify'); 
+    echo "<span id='notification'>".$notify . "</span>"; echo validation_errors("<span id='warning' style='margin-top:35px; margin-bottom:0px;'>","</span>");
+    $this->session->unset_userdata('notify');
+    ?>
     <br>
       <?php
         $this->load->helper('form');
@@ -101,15 +110,16 @@
         </tr>
         <tr>
           <td>Phone number: </td>
-          <td> <?php echo "<span class='user_info'>+421".$row->p_number."</span>"; echo form_input("p_number", $row->p_number, "class='info'");?> </td>
+          <td> <?php echo "<span class='user_info'>".$row->p_number."</span>"; echo form_input("p_number", $row->p_number, "class='info'");?> </td>
         </tr>
         <tr>
           <td>Email: </td>
           <td> <?php echo "<span class='user_info'>".$row->email."</span>"; echo form_input("email", $row->email, "class='info'");?> </td>
           
           <td style="width:250px; text-align:center;">
-           <a onclick="changeElementsProfile();" id="inputChanger"> Change profile</a>
-           <a onclick="document.getElementById('user_change_form').submit();" id="userDataChanger"> Confirm change</a>
+          <a onclick="document.getElementById('user_change_form').submit();" id="userDataChanger"> Confirm change</a>
+          <a onclick="changeElementsProfile();" id="inputChanger"> Change profile</a>
+           
           </td>
         </tr>
       </table>

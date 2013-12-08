@@ -5,10 +5,9 @@ class Auth extends CI_Controller {
   function __construct(){
     parent::__construct();
     }
-	function registration($notify = ""){
+	function registration(){
     $data['title'] = 'Registration';
-    if(isset($notify))
-      $data['notify'] = $notify;
+    
     $this->load->view("view_reg", $data);
  }
  
@@ -87,9 +86,8 @@ class Auth extends CI_Controller {
     if($this->registration->register_user($user, $userdata))
     		$this->registration->send_activation_email($act_key);   
     
-    $notify = "Congratulations ". $this->input->post('name') ." !!<br>You have been succesfully registered. <br> Please check your email for activation";      
-    
-    $this->registration($notify); 
+    $this->load_notification('reg');
+      redirect('/registration'); 
    }else{
     $this->load->view('view_reg');   
    } 
@@ -158,9 +156,9 @@ class Auth extends CI_Controller {
     } 
  }
 
-  function forgotten_pass($notify = ""){
-    $data['notify'] = $notify;
-    $this->load->view("view_forg_pass", $data);
+  function forgotten_pass(){
+    
+    $this->load->view("view_forg_pass");
   }
   function send_forgotten_pass(){
     $this->load->helper('url');
@@ -168,9 +166,9 @@ class Auth extends CI_Controller {
     $this->load->model('login');
     $this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|valid_email|callback_check_email_forg');
     
-    if($this->form_validation->run()){
-      $this->login->send_forgotten_pass();
-      $this->forgotten_pass('Your new pasword has been sent.');
+    if($this->form_validation->run() && $this->login->send_forgotten_pass()){
+      $this->load_notification('new_pass');
+      redirect('/forgotten_pass');
     }else
       $this->forgotten_pass();
   
@@ -190,4 +188,20 @@ class Auth extends CI_Controller {
     $this->login->logout();
     }
     
+  function load_notification($id){
+    $output = $this->notifications_auth($id);
+    $this->session->set_userdata( array('notify' => $output));
+  }
+
+  function notifications_auth($id){
+    if(isset($id)){
+      switch($id){
+        //case 'login': return "Your personal information has been changed!";
+        //case 'logout': return "You have successfully logged out!";
+        case 'reg': return "Congratulations ". $this->input->post('name') ." !!<br>You have been succesfully registered. <br> Please check your email for activation";
+        case 'new_pass': return "'Your new pasword has been sent.";
+      }
+    }
+  }
+
 }

@@ -43,12 +43,18 @@
     <h1>hudobniny.cz</h1>
   </header>
   <nav>
-    <a href="home">Home</a>
+    <?php
+      echo anchor('/home','Home');
+      echo anchor('/about','About');
+    ?>
   </nav>
   
   <section>
   <h2>Registration</h2>
   <?php
+    $notify = "";
+    if($this->session->userdata('notify'))
+      $notify = $this->session->userdata('notify');
     if(strlen($notify) < 4){
     $this->load->helper('form'); 
     echo form_open('/reg_validation');
@@ -119,6 +125,7 @@
     echo validation_errors();  
     }else
       echo "<p class='warning_message_login'>".$notify."</p>";
+     $this->session->unset_userdata('notify');
   ?>
 </section> 
 </div>

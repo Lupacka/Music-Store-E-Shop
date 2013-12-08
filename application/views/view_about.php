@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title><?php echo "Forgotten Password"?></title>
+	<title><?php echo $title?></title>
   <script type="text/javascript" src="http://hudobniny.g6.cz/jsfunctions.js"></script>
   <link href="http://hudobniny.g6.cz/styles/style_main.css" rel="stylesheet" type="text/css" />
 <body>
@@ -12,11 +12,11 @@
      <?php
       if(isset($not))
         echo "<span>". $not ."</span>";
-  	  		 $this->load->helper('url');
-     
+  	  $this->load->helper('url');
+        echo $this->input->post('pass');
         if($this->session->userdata('loged')){
           echo "Welcome <b>". ucfirst($this->session->userdata('nick')) . "</b>";
-    		  echo " |".anchor('/profile', 'Profile');
+    		  echo " |".anchor('profile', 'Profile');
     		  echo anchor('/logout', 'Logout', '');
         }else{
   	     	echo  
@@ -52,34 +52,31 @@
   </nav>
   
   <section>
-  <h2>Forgotten Password</h2>
-  <table>
-  <?php
-    $notify = "";
-    $this->load->helper('form'); 
-    echo form_open('/send_forgotten_pass');
-    
-    echo "<tr><td style='text-align: right;'>Email: </td><td>";
-    echo form_input('email','',"style='float: left;'");
-    echo "</td></tr>";
-    
-    echo "<tr><td>";
-    echo form_submit('forg_submit', 'Send Email', "style='margin-left:100%;'");
-    echo "</td>
-    </tr>";
-    echo "<tr><td colspan='2'><p> Please enter your email adress and after validation a new password will be sent. </p></td></tr>";
-    echo "<tr><td colspan='2'>";
-    echo validation_errors("<p id='warning'>","</p>");
-    if($this->session->userdata('notify'))
-      $notify = $this->session->userdata('notify');
-     
-    echo "<br><p id='notification'>". $notify ."</p></td></tr>";
-    echo form_close();
-    $this->session->unset_userdata('notify');
-  ?>
-  </table>
-</section>
-</div>
+  
+    <h2>About this project</h2> 
+    <br>
+    <p>
+    This web application, which i called E-shop: Musical instruments store is intended to provide products associated with music industry.<br>
+    E-shop is opened for general public, so they can purchase desired good or just find out new information about new products.
+    ...
+    </p>
+    <br>
+    Project specification:
+    <ul>
+      <li><a href="http://hudobniny.g6.cz/dlc/RP1_3.pdf">Slovak</a></li>
+      <li><a href="http://hudobniny.g6.cz/dlc/RP1_3_en.pdf">English</a></li>
+    </ul>
+    <br>
+    Project: 
+    <ul>
+      <li><a href="http://hudobniny.g6.cz/dlc/first_stage.zip">1. Stage</a></li>
+      <li>2. Stage</li>
+      <li>3. Stage</li>
+      <li>4. Stage</li>
+    </ul>
+  </section> 
+  	
 
+</div>
 </body>
 </html>

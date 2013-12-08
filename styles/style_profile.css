@@ -10,7 +10,7 @@
 }
 
 #data_frame h2{
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-bottom: 1px solid silver;  
 }
 
@@ -73,6 +73,5 @@ aside{
 
 aside img {
   border: 1px solid black;
-  width: 150px;
-  height: 150px;
+  
 }

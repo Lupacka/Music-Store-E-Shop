@@ -10,7 +10,7 @@ class profile extends CI_Controller {
     #echo "Hi buzna <br>";
 		$this->profile();
 	}
-  function profile($notification = ""){
+  function profile(){
     if($this->session->userdata('id')){  
       $data['title'] = ucfirst($this->session->userdata('nick'))."'s profile";  
       $this->load->model('get_db');
@@ -18,9 +18,7 @@ class profile extends CI_Controller {
     }else
       $data['title'] = "None's profile";
   	
-    $this->load->model('registration');
-    if(isset($notification))
-      $data['notify'] = $notification;    
+    $this->load->model('registration');  
 
     $this->load->view('view_profile', $data);  
     
@@ -45,7 +43,10 @@ class profile extends CI_Controller {
       
       $this->profile_mod->up_db_photo($data['file_ext']);
       $this->image_resize($data['file_ext']);
-      $this->profile('You have succefuly change your profle photo!');
+      
+      $this->load_notification('photo');
+      redirect('/profile');
+      //$this->profile('You have succefuly change your profle photo!');
     }else
 			$this->profile($this->upload->display_errors());
        
@@ -107,9 +108,10 @@ class profile extends CI_Controller {
           )
          );
     $this->get_db->update_user_info($data);
-    $this->profile("Your personal information has been changed!");  
-   }else{
-    
+    $this->load_notification('info');
+    redirect('/profile');
+    //$this->profile("Your personal information has been changed!");  
+   }else{ 
     $this->profile();     
    } 
   
@@ -147,7 +149,7 @@ class profile extends CI_Controller {
    return false;
   }
  function change_password(){
-  
+  $this->load->helper('url');
   $this->load->library('form_validation');
   $config = array(
                array(
@@ -166,10 +168,8 @@ class profile extends CI_Controller {
   
     $this->load->model('profile_mod');
     if($this->profile_mod->change_pass($this->input->post('pass_new'), $this->session->userdata('id')))
-      $not = "Your password has been changed!!";
-    else
-      $not = validation_errors(); 
-    $this->profile($not);
+      $this->load_notification('pass');
+      redirect('/profile');
   }else{
    $this->profile();
   }             
@@ -182,6 +182,19 @@ class profile extends CI_Controller {
     $this->form_validation->set_message("check_pass","Your old password doesn't match with password in database!!");
     return false;   
   }
+  function load_notification($id){
+    $output = $this->notifications_profile($id);
+    $this->session->set_userdata( array('notify' => $output));
+  }
 
+  function notifications_profile($id){
+    if(isset($id)){
+      switch($id){
+        case 'info': return "Your personal information has been changed!";
+        case 'pass': return "Your password has been changed!!";
+        case 'photo': return "You have successfully changed your profle photo!";
+      }
+    }
+  }
 
 }

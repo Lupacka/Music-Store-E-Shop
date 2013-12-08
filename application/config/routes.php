@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "hudobniny";
 $route['home'] = "hudobniny/home";
+$route['about'] = "hudobniny/about";
 $route['login'] = "auth/login";
 $route['logout'] = "auth/logout";
 $route['registration'] = "auth/registration";

@@ -28,11 +28,20 @@
       
      
       function showLoginPop(){
-        var pop_up= document.getElementById('login_pop');
+        var pop_up = document.getElementById('login_pop');
         if(pop_up.style.visibility != "visible")
           pop_up.style.visibility = "visible";
         else
           pop_up.style.visibility = "hidden";
+      }
+      
+      function checkUpload(){
+        var uploadis = document.getElementById('up_img');
+        var buttonis = document.getElementById('up_img_but');
+      
+        if(uploadis != ''){
+         buttonis.disabled = false;
+        } 
       }
      
       

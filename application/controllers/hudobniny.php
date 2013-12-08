@@ -7,16 +7,11 @@ class hudobniny extends CI_Controller {
     
 	public function index()
 	{
-    #echo "Hi buzna <br>";
 		$this->home();
 	}
   
   public function home(){
     $data['title'] = "Welcome";
-   // if($this->session->not('not'))
-    //  $data['not'] = $this->session->not('not');
-   // else
-  //    $data['not'] = ""; 
     
     $this->load->model("get_db"); 
     $data['news'] = $this->get_db->get_items_new();
