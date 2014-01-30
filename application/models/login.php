@@ -26,6 +26,7 @@
             $data = array(
               'nick' => $val->nick,
               'id' => $val->id,
+              'group' => $val->group,
               'loged' => '1'
             );      
             $this->session->set_userdata($data);

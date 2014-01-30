@@ -1,0 +1,255 @@
+#sub_cat{
+  float: left;
+  height: 95%;
+  width: 17%;
+  padding-left: 5px;
+
+}
+
+#sub_cat ul {
+  list-style-type: none;
+  padding: 0px;
+}
+#sub_cat li a{
+  border-bottom: 1px solid #EFEFEF;
+  text-decoration: none;
+  display: block;
+  padding:10px 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #444444;
+}
+
+#sub_cat li a:hover{
+   background-color: #F6F6F6;
+
+}
+#sub_cat .admin_add_sub{
+  background-color: #8eec8e; 
+}
+#sub_cat .admin_add_sub a{
+  font-size: 10px;
+}
+#sub_cat .admin_add_sub a:hover{
+  background-color: #8fe08f; 
+}
+#sub_cat .admin_add_sub img{
+  width:20px; 
+  height:20px;
+}
+
+#prod_frame_header{
+  border-bottom: 1px solid silver;
+  width: auto;
+  height: auto;   
+}
+#prod_frame form{
+   font-size: 10px;
+   float: right;
+   margin-top: 18px;
+}
+#prod_frame_header p{
+    color: #666666 ;
+    font-size: 17px;
+  	font-weight: bold;
+}
+#prod_frame{
+  width: 82%;
+  float: right;
+  overflow-y: auto;
+}
+/*#prod_frame h2{
+  margin-bottom: 5px;
+  border-bottom: 1px solid silver;  
+  padding-bottom: 18px;
+} */
+#prod_frame .admin_add_prod{
+  background-color: #8eec8e; 
+  float: right;
+  margin: 18px 11px;
+  cursor: pointer; 
+} 
+#prod_frame .admin_add_prod a{
+  font-size: 5px;
+}
+#prod_frame .admin_add_prod a:hover{
+  background-color: #8fe08f; 
+ } 
+#prod_frame ul{
+  list-style-type: none;
+  padding: 0px;
+  margin-top: 15px; 
+    
+}
+
+#prod_frame li{
+  border-bottom: 1px solid #F1F1F1;
+  border-right: 1px solid #F1F1F1;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  width: 160px;
+  height: 230px;
+  position: relative;
+  float: left;
+  margin: 7px;
+  padding: 16px;
+
+}
+
+#prod_frame .item_image{
+  display: block;
+  height: 158px;
+  
+  
+}
+
+#prod_frame .item_image img{
+  display: block;
+  height: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+  
+}
+#prod_frame li .price {
+  bottom: 0px;
+  position: absolute;
+  vertical-align: middle;
+  margin-bottom: 8px;
+}
+#prod_frame li a{
+  text-decoration: none;
+  font-weight: bold;
+  color: #707070;
+}
+#prod_frame li p{
+    margin-bottom: auto;
+    margin-top: 20px;
+    text-align: center;
+    position: static;
+}
+#prod_frame li span{
+    font-weight: bold;
+    
+}
+
+#prod_frame li input[type=button]{
+    background: url("http://hudobniny.g6.cz/media/img_web/cart.png") center no-repeat #000000;
+    cursor: pointer;
+    display: block;
+    float: right;
+    margin-top: 1px;
+    border: none;
+    width: 30px;
+    margin-left: 91px;
+    }   
+
+.new_sub{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#new_sub_div, #del_prod_div{
+  background: -webkit-linear-gradient(top, #FAFAFA 0px, #EDEDED 100%) transparent;
+  background: -moz-linear-gradient(top, #FAFAFA 0px, #EDEDED 100%) transparent;
+  border: 1px solid #F1F1F1;
+  width: 300px;
+  height: 80px;
+  position: absolute;
+  margin: 14% 0px 0px 20%;
+  visibility: hidden;
+  border-radius: 15px;
+  z-index: 99;
+  padding: 15px
+}
+
+#new_sub_div form{
+  text-align: center;
+  margin-top: 31px;
+
+}
+
+#new_prod_div{
+  background: -webkit-linear-gradient(top, #FAFAFA 0px, #EDEDED 100%) transparent;
+  border: 1px solid #F1F1F1;
+  border-radius: 15px;
+  height: 530px;
+  margin: 9% 0px 0px 13%;
+  position: absolute;
+  visibility: hidden;
+  width: 620px;
+  z-index: 99;
+  padding: 15px;
+}
+ #new_prod_div form {
+  display: block;
+ }
+
+
+/*...................................... Detail Produktu............................*/
+
+#chain{
+  /*border: 1px solid green;*/
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+#chain, #chain a{
+  color: #404040;
+  font-style: oblique;
+  font-size: 15px;
+}
+
+#prod_photo{
+  border: 1px solid #E7E7E7;
+  height: 210px;
+  padding-top: 9px;
+  position: absolute;
+  text-align: center;
+  width: 210px;
+  margin-top: 22px;
+    
+}
+
+#prod_header{
+  /*border: 1px solid blue;*/
+  float: right;
+  height: 110px;
+  width: 780px; 
+}
+
+#prod_about{
+  /*border: 1px solid red; */
+  color: #696969;
+  float: left;
+  font-size: 1em;
+  font-style: oblique;
+  margin-top: 15px;
+  margin-left: 233px;
+  position: static;
+  width: 534px;
+}
+
+#prod_price{
+  border: 1px solid #E7E7E7;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.047);
+  float: right;
+  font-size: 16px;
+  font-style: oblique;
+  height: auto;
+  margin-top: 14px;
+  padding: 10px;
+  width: 216px;
+  }
+
+#prod_price input[type=button]{
+  background: url("http://hudobniny.g6.cz/media/img_web/cart.png") 8% 50% no-repeat #000000;
+  border: medium none currentColor;
+  color: white;
+  font-size: 10px;
+  height: 30px;
+  text-align: right;
+  width: 144px;
+  margin-top: 10px;
+
+}

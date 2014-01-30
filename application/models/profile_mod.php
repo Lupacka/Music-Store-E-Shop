@@ -39,7 +39,16 @@
      else
       return false; 
     }
-  
+    
+    function update_user_info($data){
+      $this->db->update_batch("users_info", $data , "id");    
+    }
+    
+    function get_user_info($id){ 
+      $query = $this->db->get_where('users_info', "id = ".$id );
+      return $query->result(); 
+    }
+    
     function up_db_photo($atr){
       $this->load->helper('url');
       $this->db->where('id', $this->session->userdata('id'));

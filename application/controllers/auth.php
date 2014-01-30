@@ -4,11 +4,13 @@ class Auth extends CI_Controller {
   
   function __construct(){
     parent::__construct();
+    $this->load->library('template');
     }
 	function registration(){
     $data['title'] = 'Registration';
     
-    $this->load->view("view_reg", $data);
+    $this->template->write_view('content', 'view_reg', $data); 
+    $this->template->render();
  }
  
   function reg_validation(){
@@ -89,7 +91,8 @@ class Auth extends CI_Controller {
     $this->load_notification('reg');
       redirect('/registration'); 
    }else{
-    $this->load->view('view_reg');   
+    $this->template->write_view('content', 'view_reg'); 
+    $this->template->render();   
    } 
 
   }
@@ -116,14 +119,16 @@ class Auth extends CI_Controller {
   	$this->load->model('registration');
   	$key = strip_tags($this->input->get('key', TRUE));
   	if($this->registration->activate_acc($key)) {
-				$this->load->view('view_succ_activate');  		
+				$this->template->write_view('content', 'view_succ_activate'); 
+        $this->template->render();   		
   		}
 		  	
   	}
 
   function login(){
     $data['title'] = "Login";
-    $this->load->view("view_login", $data);
+    $this->template->write_view('content', 'view_login', $data); 
+    $this->template->render(); 
  }
   
  
@@ -136,7 +141,8 @@ class Auth extends CI_Controller {
     if ($this->form_validation->run()){
       redirect('');
     }else{
-      $this->load->view("view_login");
+      $this->template->write_view('content', 'view_login'); 
+    $this->template->render(); 
   }
  }
 
@@ -158,7 +164,8 @@ class Auth extends CI_Controller {
 
   function forgotten_pass(){
     
-    $this->load->view("view_forg_pass");
+    $this->template->write_view('content', 'view_forg_pass'); 
+    $this->template->render(); 
   }
   function send_forgotten_pass(){
     $this->load->helper('url');
@@ -196,7 +203,7 @@ class Auth extends CI_Controller {
   function notifications_auth($id){
     if(isset($id)){
       switch($id){
-        //case 'login': return "Your personal information has been changed!";
+        //case 'login': return "You have successfully logged in!";
         //case 'logout': return "You have successfully logged out!";
         case 'reg': return "Congratulations ". $this->input->post('name') ." !!<br>You have been succesfully registered. <br> Please check your email for activation";
         case 'new_pass': return "'Your new pasword has been sent.";

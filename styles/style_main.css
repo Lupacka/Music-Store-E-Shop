@@ -17,7 +17,7 @@
       	
 	}
   #site{
-    width: 1061px;
+    width: 1065px;
     overflow-x: hidden;
     margin-left: auto ;
     margin-right: auto ;
@@ -64,7 +64,7 @@
     height: 165px;
     position: absolute;
     width: 340px; 
-    padding: 10px;
+    padding: 15px;
     visibility: hidden;
     margin: -5px 0px 0px -220px;  
     z-index: 1;
@@ -91,13 +91,6 @@
     width: 70px;
     color: #d1d6e0;  
   }
-  .close_pop{
-    background: url("http://hudobniny.g6.cz/media/img_web/close_button_mini.png") 0px 0px no-repeat transparent;
-    position: absolute;
-    right: 1px;
-    
-  }
-  
   header a{
     color: #a7a4a4;
     text-decoration: none;
@@ -116,11 +109,12 @@
   	background: #585656;
     }
   section {
-  background-color:white;
+    background-color:white;
 		margin: 10px;
   	-webkit-box-shadow: 0 0 8px #D0D0D0;	
-    height: 600px; 
+    height: 902px; 
     padding: 15px;
+    /*display: inline-block; /*/
     
 	}
   section h2 {
@@ -132,7 +126,7 @@
   }
   
   #new_prod_frame{
-   height: 325px;
+   height: 290px;
    overflow: hidden;
   }
   
@@ -154,13 +148,18 @@
     -webkit-box-shadow: 0 0 8px #D0D0D0;
     margin-left: 10px;
     margin-top: 1%;
-    width: 168px;
+    width: 160px;
+    height: 255px;
    
     }
   
   #new_prod_frame img{
+    
     display: block;
-    margin: auto;
+    height: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
   }
   #new_prod_frame .item_content{
     margin: 25px 0px 10px 0px;
@@ -169,9 +168,11 @@
   }
   
   #new_prod_frame p{
+    bottom: 26px;
     font-size: 10px;
-    margin-bottom: 10px;
-    text-align: center;
+    margin-left: 45px;
+    position: absolute;
+    
   }
   
   #new_prod_frame .item_else{
@@ -183,7 +184,12 @@
     font-weight: bold;
     font-size: 14px;
     }
-  
+  #new_prod_frame li .price {
+    bottom: 0px;
+    position: absolute;
+    vertical-align: middle;
+    margin-bottom: 8px;
+}
   #new_prod_frame li input[type=button]{
     background: url("http://hudobniny.g6.cz/media/img_web/cart.png") center no-repeat #000000;
     cursor: pointer;
@@ -192,6 +198,7 @@
     margin-top: 1px;
     border: none;
     width: 25px;
+    margin-left: 91px;
     }
   
   #new_prod_frame .new_prod_arrow_left{
@@ -202,7 +209,7 @@
     float: left;
     text-indent: -9999px; 
     width: 15px;
-    margin-top: 7%;
+    margin-top: 11%;
   }
   
   #new_prod_frame .new_prod_arrow_right{
@@ -213,7 +220,7 @@
     float: right;
     text-indent: -9999px;
     width: 15px;
-    margin-top: 7%;
+    margin-top: 11%;
       
   }
   
@@ -269,3 +276,14 @@
    word-spacing: 0px;
    
 }
+ #overlay{
+  background-color: #000000;
+  height: 2000px;
+  left: 0px;
+  opacity: 0.8;
+  position: fixed;
+  top: 0px;
+  visibility: hidden;
+  width: 2000px;
+    /*z-index: 99;*/
+ }

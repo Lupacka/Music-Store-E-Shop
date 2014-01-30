@@ -39,7 +39,7 @@
 */
 
 $route['default_controller'] = "hudobniny";
-$route['home'] = "hudobniny/home";
+$route['home'] = "hudobniny";
 $route['about'] = "hudobniny/about";
 $route['login'] = "auth/login";
 $route['logout'] = "auth/logout";
@@ -53,6 +53,10 @@ $route['activate_acc'] = "auth/activate_acc";
 $route['view_succ_activate'] = "auth/view_succ_activate"; 
 $route['forgotten_pass'] = "auth/forgotten_pass";
 $route['send_forgotten_pass'] = "auth/send_forgotten_pass"; 
+$route['products'] = "products";
+$route['add_sub'] = "products/add_sub";
+$route['add_new_prod'] = "products/add_new_product";
+
 
 
 $route['404_override'] = '';

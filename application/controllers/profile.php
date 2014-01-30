@@ -4,6 +4,8 @@ class profile extends CI_Controller {
   
   function __construct(){
     parent::__construct();
+    $this->load->library('template');
+    $this->load->model('profile_mod');
     }
 	public function index()
 	{
@@ -13,14 +15,14 @@ class profile extends CI_Controller {
   function profile(){
     if($this->session->userdata('id')){  
       $data['title'] = ucfirst($this->session->userdata('nick'))."'s profile";  
-      $this->load->model('get_db');
-      $data['user_info'] = $this->get_db->get_user_info($this->session->userdata('id'));
+      $data['user_info'] = $this->profile_mod->get_user_info($this->session->userdata('id'));
     }else
       $data['title'] = "None's profile";
   	
-    $this->load->model('registration');  
+    //$this->load->model('registration');  
 
-    $this->load->view('view_profile', $data);  
+    $this->template->write_view('content', 'view_profile', $data); 
+    $this->template->render(); 
     
   }
   function upload_profile_img(){
@@ -38,7 +40,7 @@ class profile extends CI_Controller {
     $this->upload->initialize($config); 
     $this->upload->set_allowed_types('*');   
     if ($this->upload->do_upload('img')){
-      $this->load->model('profile_mod');
+      //$this->load->model('profile_mod');
       $data = $this->upload->data();
       
       $this->profile_mod->up_db_photo($data['file_ext']);
@@ -46,13 +48,9 @@ class profile extends CI_Controller {
       
       $this->load_notification('photo');
       redirect('/profile');
-      //$this->profile('You have succefuly change your profle photo!');
+    
     }else
-			$this->profile($this->upload->display_errors());
-       
-   // echo display_errors();
-   // $this->load->model('profile');
-   // $this->profile->up_db_photo();
+			$this->profile();
   }
   
   function image_resize($atr){
@@ -70,7 +68,7 @@ class profile extends CI_Controller {
   
   function update_profile(){
     $this->load->helper('url');
-    $this->load->model('get_db');
+    //$this->load->model('profile_mod');
     $this->load->library('form_validation');
     $config = array(
                 array(
@@ -107,7 +105,7 @@ class profile extends CI_Controller {
            )
           )
          );
-    $this->get_db->update_user_info($data);
+    $this->profile_mod->update_user_info($data);
     $this->load_notification('info');
     redirect('/profile');
     //$this->profile("Your personal information has been changed!");  
@@ -117,36 +115,29 @@ class profile extends CI_Controller {
   
   }
   
-  function check_adress(){
-    $adress = $this->input->post('adress');
-    $order = 1;
-    $pom = "";
-    for($i = 0; $i < strlen($adress); $i++){
-      if($adress[$i] == ','){
-        $pom = trim($pom);
-        switch($order){
-          case 1:
-            if(strlen($pom) < 5 || strlen($pom) > 25)
-              return false;
-            break;
-          case 2:
-            if(!is_numeric($pom) || strlen($pom) != 5)
-              return false;
-            break; 
-          case 3:
-            if(strlen($pom) < 5 || strlen($pom) > 15)
-              return false;
-            break;
-        }
-        $pom = ""; 
-        $order++; 
-      }else
-        $pom .= $adress[$i];
+  function check_adress(){              //check
+    $adress = explode(',', $this->input->post('adress') );
+    $test = false;
+    if(count($adress) == 3){
+      if(ctype_alnum($adress[0]) && strlen($adress[0]) < 20 && preg_match("/\s/",$adress[0])  && strlen($adress[0]) > 5 )
+        $test = true;
       
-    } 
-    return true;
-   $this->form_validation->set_message('update_profle','Something wen wrong');
-   return false;
+      if(is_numeric(ltrim($adress[1])) && strlen(ltrim($adress[1])) == 5 )
+        $test = true;
+      else
+        $test = false;
+        
+      if(strlen(ltrim($adress[2])) < 20 && strlen(ltrim($adress[2])) > 5 )
+        $test = true;
+      else
+        $test = false;
+    }
+    if($test)
+      return true;
+    else{
+      $this->form_validation->set_message('check_adress','Something went wrong'); 
+      return false;
+    }
   }
  function change_password(){
   $this->load->helper('url');
@@ -156,17 +147,17 @@ class profile extends CI_Controller {
                   'field' => 'pass_old', 'label' => 'Old Password', 'rules' => 'required|xss_clean|trim|callback_check_pass'      
                 ),
                 array(
-                  'field' => 'pass_new', 'label' => 'Password', 'rules' => 'required|matches[pass_again]|min_length[6]|max_length[15]|xss_clean|trim'      
+                  'field' => 'pass_new', 'label' => 'New Password', 'rules' => 'required|min_length[6]|max_length[15]|xss_clean|trim'      
                 ),
                 array(
-                  'field' => 'pass_again', 'label' => 'Repeat password', 'rules' => 'required|xss_clean|trim'      
+                  'field' => 'pass_again', 'label' => 'Repeat password', 'rules' => 'required|xss_clean|trim|matches[pass_new]'      
                 )                       
     );
   $this->form_validation->set_rules($config); 
   
   if ($this->form_validation->run()){
   
-    $this->load->model('profile_mod');
+    //$this->load->model('profile_mod');
     if($this->profile_mod->change_pass($this->input->post('pass_new'), $this->session->userdata('id')))
       $this->load_notification('pass');
       redirect('/profile');
@@ -176,7 +167,7 @@ class profile extends CI_Controller {
  } 
  
   function check_pass(){
-    $this->load->model('profile_mod');
+    //$this->load->model('profile_mod');
     if($this->profile_mod->check_pass($this->session->userdata('nick')))
      return true;
     $this->form_validation->set_message("check_pass","Your old password doesn't match with password in database!!");
