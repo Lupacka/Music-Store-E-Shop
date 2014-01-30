@@ -31,7 +31,7 @@
         };
      ?>
       <div id="login_pop">
-      <img src="<?php echo base_url("/media/img_web/close_button_mini.png")?>" alt="krizik" style="float: right; cursor:pointer; position: absolute; margin-left: 151px;" onclick="showLoginPop()"> 
+      <img src="<?php echo base_url("/media/img_web/close_button_mini.png")?>" alt="krizik" style="float: right; cursor:pointer; margin-left: 151px;" onclick="showLoginPop()"> 
       <p>Login</p>
       <?php
         $this->load->helper('form'); 

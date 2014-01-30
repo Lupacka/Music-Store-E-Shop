@@ -1,4 +1,5 @@
 <?php
+$this->load->helper('form');
 foreach($prod as $row){
 ?>
 
@@ -17,16 +18,21 @@ foreach($prod as $row){
 
 <div id = "prod_header">
 <?php
-    echo "<h2 style='border-bottom: 1px solid #F1F1F1; font-size: 19px;'>" . $row->name . "</h2>";
+    echo form_open('/foo');
+    if($this->session->userdata('group') == 1 && $this->session->userdata('loged') == 1) 
+      //echo "<a style='float:right; cursor: pointer;' onClick='changeElementsProd()')>Change</a>";
+      echo "<a style='float:right; display:none;' onClick=''>Confirm change</a>";
+      
+    echo "<h2 class='orig_content' style='border-bottom: 1px solid #F1F1F1; font-size: 19px;'>" . $row->name . form_input('rating',$row->rating, "class='prod_change_form'"). "</h2>";
     $pom = 0;
-    for($i = 0; $i < 4; $i++ ){
+    for($i = 0; $i < 5; $i++ ){
        if($row->rating >= $pom)
          echo "<img src='http://hudobniny.g6.cz/media/img_web/one_star_fill.png' style='width:30px;height:30px;'>";
        else
          echo "<img src='http://hudobniny.g6.cz/media/img_web/one_star.png' style='width:30px;height:30px;'>"; 
        $pom += 25; 
     }
-    echo "<img src='http://hudobniny.g6.cz/media/img_web/one_star.png' style='width:30px;height:30px;'>";
+    echo form_input('rating',$row->rating, "class='prod_change_form'");
   }; 
 ?> 
 
@@ -43,13 +49,13 @@ foreach($prod as $row){
 
 <div id="prod_about">
 <?php
-  echo $row->about;
+  echo $row->about. form_textarea('newabout',$row->about,"class='prod_change_form'");
 ?>
 </div>
  <div id="prod_price">
 Price:<br> 
 <?php
-  echo "<b style='float:right;font-size: 25px;'>".$row->price.",-&euro;</b>";
+  echo "<b class='orig_content' style='float:right;font-size: 25px;'>".$row->price. form_input('newPrice',$row->price,"class='prod_change_form' style='width: 40px;'").",-&euro;</b>";
   
 ?><br>
 <input type="button" value='Add to shopping cart'>

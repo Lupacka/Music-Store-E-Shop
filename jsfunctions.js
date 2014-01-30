@@ -86,7 +86,22 @@
         //document.getElementById('sub_cat').style.visibility = 'hidden';      
       }
       
-      
+      function changeElementsProd(){
+        var inputis = document.getElementsByClassName('prod_change_form');
+        var content = document.getElementsByClassName('orig_content'); 
+        var clikac = document.getElementById('');
+        
+        for(var i = 0; i < inputis.length; i++){
+          if(getComputedStyle(inputis[i]).display == "none"){
+           	  inputis[i].style.display="inline";
+              content[i].style.display="none";
+            }else{
+              inputis[i].style.display="none";
+              content[i].style.display="inline";
+            }
+        }
+          
+      }
       
      
      
