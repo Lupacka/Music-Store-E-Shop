@@ -70,7 +70,7 @@ class products extends CI_Controller {
     $this->load->library('form_validation');
     $config = array(
                 array(
-                  'field' => 'name', 'label' => 'Name', 'rules' => 'required|min_length[3]|max_length[30]|xss_clean|trim'      
+                  'field' => 'name', 'label' => 'Name', 'rules' => 'required|min_length[3]|max_length[40]|xss_clean|trim'      
                 ) ,
                 array(
                   'field' => 'cat', 'label' => 'Category', 'rules' => 'required|min_lenghth[3]|max_length[20]|xss_clean|trim'   
@@ -79,7 +79,7 @@ class products extends CI_Controller {
                   'field' => 'sub', 'label' => 'Sub category', 'rules' => 'required|min_lenghth[5]|max_length[30]|xss_clean|trim'    
                 )
                 ,array(
-                  'field' => 'item_label', 'label' => 'Item Label', 'rules' => 'required|min_lenghth[3]|max_length[15]xss_clean|trim'    
+                  'field' => 'item_label', 'label' => 'Item Label', 'rules' => 'required|min_lenghth[3]|max_length[25]xss_clean|trim'    
                 )
                 ,array(
                   'field' => 'about', 'label' => 'About', 'rules' => 'required|xss_clean|trim'    

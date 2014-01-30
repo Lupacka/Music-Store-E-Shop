@@ -38,10 +38,10 @@
  <div id="prod_frame_header">
    <p>
    <?php
-    if(empty($prod))
+   /* if(empty($prod))
       echo "<span onload='invalid_input_prod()'>Invalid !!</span>";
-    else 
-      echo $title;
+    else*/ 
+    echo $title;
     if(isset($sub)){
       $sub_clean = str_replace('_',' ', $sub);
       if(in_array($sub_clean, $sub_cat_menu)){

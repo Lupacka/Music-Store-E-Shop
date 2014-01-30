@@ -56,7 +56,7 @@
       echo anchor('/products?cat=guitars','Guitars');
       echo anchor('/products?cat=bass_guitars','Bass Guitars');
       echo anchor('/products?cat=drums','Drums');
-      echo anchor('/products?cat=keyboards','Keyboards');
+      //echo anchor('/products?cat=keyboards','Keyboards');
       echo anchor('/about','About');
     ?>
   </nav>
