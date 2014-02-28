@@ -4,7 +4,7 @@ class hudobniny extends CI_Controller {
   function __construct(){
     parent::__construct();
     $this->load->helper('url');
-    $this->load->library('template');
+    $this->load->library('template');  
     }
     
 	public function index()
@@ -13,6 +13,7 @@ class hudobniny extends CI_Controller {
 	}
   
   public function home(){
+    
     $data['title'] = "Welcome";
     
     $this->load->model("get_db"); 
@@ -30,6 +31,28 @@ class hudobniny extends CI_Controller {
     $this->template->render(); 
       
   }
+  function prod_search(){
+   
+    if(isset($_POST['vst']) && $_POST['vst'] != ""){
+     $vst = trim(strip_tags($_POST['vst']));
+     
+     $this->db->select('name,id');
+     $this->db->like('name', $vst, 'both');
+     $query = $this->db->get('tovar', 4);
+     
+     if($query->num_rows() > 0){
+       echo "<ul>";
+       foreach($query->result() as $row){
+        echo anchor("/products?id=" .$row->id,"
+        <li>
+          <img src='". base_url('/media/prod_photo/'.$row->id.'_thumb.jpg') ."'>
+          <span>".$row->name . "</span></li>");
+       }
+       echo "</ul>";
+     }  
+    }
+  }
+  
   function reset_pass(){            //pre testing
     $this->load->model('registration');
     $salt = $this->registration->salting();

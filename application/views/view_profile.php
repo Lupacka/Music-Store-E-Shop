@@ -5,10 +5,8 @@
     <?php
     
     foreach($user_info as $row){
-      if(file_exists('./media/users_photo/'.$this->session->userdata('id').'.jpg'))
-        echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";
-      else
-        echo "<img src='./media/blank_person.jpg' alt='". $row->name ."'>"; 
+      echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";
+     
     ?> 
     <br>
     <?php

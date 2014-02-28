@@ -25,11 +25,9 @@
      if($this->db->update('categories', array('sub' => $submenu)))   
       return true;
      else
-      return false; 
-    
+      return false;    
    } 
+     
   
-  }
-  
-    
+  }    
 ?>

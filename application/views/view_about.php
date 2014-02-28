@@ -16,7 +16,7 @@
     Project: 
     <ul>
       <li><a href="http://hudobniny.g6.cz/dlc/first_stage.zip">1. Stage</a></li>
-      <li>2. Stage</li>
+      <li><a href="http://hudobniny.g6.cz/dlc/second_stage.zip">2. Stage</a></li>
       <li>3. Stage</li>
       <li>4. Stage</li>
     </ul>

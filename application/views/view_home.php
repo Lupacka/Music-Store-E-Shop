@@ -3,6 +3,7 @@
     <a class="new_prod_arrow_left" href="">prev</a>
     <ul> 
   	<?php
+      //print_r($news);
       if(isset($news) && $news != ""){
         foreach($news as $row){         
           echo "
@@ -26,3 +27,7 @@
     </ul>
     <a class="new_prod_arrow_right" href="">next</a>
     </div>
+    
+    
+    
+  

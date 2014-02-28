@@ -65,7 +65,7 @@
     position: absolute;
     width: 340px; 
     padding: 15px;
-    visibility: hidden;
+    display: none;
     margin: -5px 0px 0px -220px;  
     z-index: 1;
   } 
@@ -98,31 +98,96 @@
 	nav {
 	 font-size: 120%;
    margin-left:10px;
+   height: 25px;
   }
-  nav a {
+  nav #nav_links{
+    width: 440px; 
+    float: left;
+  }
+  nav #nav_links a {
 	 color: #d1d7db;
 	 font-weight: bold;
 	 text-decoration: none;
 	 padding: 0 0.9em;
   }
-  nav a:hover {	
+  nav #nav_links a:hover {	
   	background: #585656;
     }
+  
+  nav #nav_search{
+    width: 360px;
+    float: right;
+  }
+  nav #nav_search input {
+    
+  }
+  nav #nav_search img{
+    width:23px;
+    vertical-align: sub;
+    
+  }  
+  nav #feedback{
+    /*border: red 1px solid;*/
+    position: absolute;
+    width: 310px;
+    height: auto;
+    z-index: 1;
+    margin-top: -14px;
+  }
+  
+  nav #feedback ul{
+    background-color:white;
+    box-shadow: 0px 15px 15px 0px rgba(0, 0, 0, 0.196);    
+    /*position: absolute;
+    right: 13%; */
+    overflow: visible;
+    padding: 0px;   
+    z-index: 1;   
+  }
+  
+	nav #feedback li{
+    border-bottom: #EFEFEF 1px solid; 
+    list-style: none outside none;
+    padding: 8px;
+    height: 52px;
+    z-index: 1;
+        
+  }
+  
+  nav #feedback li span{  
+    vertical-align: 75%;
+    font-weight: bold;
+    margin-left: 13%;    
+  }
+  
+  nav #feedback li img{
+    width:50px;
+    height: 50px;  
+  }
+  
+  nav #feedback ul a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  nav #feedback ul a:hover{
+    /*background-color: #fbfdfe; */
+  }
+  
   section {
     background-color:white;
 		margin: 10px;
   	-webkit-box-shadow: 0 0 8px #D0D0D0;	
+    box-shadow: 0 0 8px #D0D0D0;
     height: 902px; 
     padding: 15px;
-    /*display: inline-block; /*/
-    
+    /*display: inline-block; /*/  
 	}
+  
   section h2 {
     color: #666666 ;
     font-size: 17px;
   	font-weight: bold;
-    
-
   }
   
   #new_prod_frame{
@@ -146,6 +211,7 @@
     position: relative;
     padding: 8px;
     -webkit-box-shadow: 0 0 8px #D0D0D0;
+    box-shadow: 0 0 8px #D0D0D0;
     margin-left: 10px;
     margin-top: 1%;
     width: 160px;
@@ -229,7 +295,7 @@
     margin: 0 15px 0 15px;
     display: block;
 	}
-	
+  
 	p.footer{
 		text-align: right;
 		font-size: 11px;
@@ -266,16 +332,15 @@
    margin-top: 0px;
    
 }
-
  #warning{
   
    color: red;
    font-size: 0.9em;
    font-weight: bold;
    margin-bottom: 5px;
-   word-spacing: 0px;
-   
+   word-spacing: 0px;   
 }
+ 
  #overlay{
   background-color: #000000;
   height: 2000px;
