@@ -284,7 +284,7 @@
 	height:85px;
 	border:blue 1px solid;
 	}
-#comments_frame .comment_footer{
+#comments_frame .comment_admin{
 	height: 18px;
 	border:yellow 1px solid;
 	}
