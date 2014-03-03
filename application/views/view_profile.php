@@ -5,18 +5,17 @@
     <?php
     
     foreach($user_info as $row){
-      echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";
-     
+      echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";  
     ?> 
     <br>
     <?php
     $this->load->helper('form');    
-    echo form_open_multipart('/upload_profile_img');
+    echo form_open_multipart('/upload_profile_img',"id='img_form'");
     echo form_upload('img','',"onchange='checkUpload()' id='up_img' style='width:78px; margin-right: 19px;'");
     echo form_submit('submit', 'Send',"id='up_img_but' style='display: block; margin: 6px 0 0px 50px;' disabled");
+    echo form_button('asd','asdas',"id='tester'");
     echo form_close();
-    ?>
-  
+    ?> 
   </aside> 
   <div id="data_frame">
     <h2><?php echo $title;?></h2>
@@ -64,7 +63,7 @@
           <td> <?php echo "<span class='user_info'>".$row->email."</span>"; echo form_input("email", $row->email, "class='info'");?> </td>
           
           <td style="width:250px; text-align:center;">
-          <a onclick="document.getElementById('user_change_form').submit();" id="userDataChanger"> Confirm change</a>
+          <a onclick="$('#user_change_form').submit();" id="userDataChanger"> Confirm change</a>
           <a onclick="changeElementsProfile();" id="inputChanger"> Change profile</a>
            
           </td>

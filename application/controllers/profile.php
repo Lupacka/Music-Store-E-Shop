@@ -36,13 +36,12 @@ class profile extends CI_Controller {
 		$config['max_size']	= '500';
 		$config['max_width']  = '3000';
 		$config['max_height']  = '3000';
-        
+      
     $this->upload->initialize($config); 
     $this->upload->set_allowed_types('*');   
     if ($this->upload->do_upload('img')){
       //$this->load->model('profile_mod');
-      $data = $this->upload->data();
-      
+      $data = $this->upload->data(); 
       $this->profile_mod->up_db_photo($data['file_ext']);
       $this->image_resize($data['file_ext']);
       
@@ -50,7 +49,8 @@ class profile extends CI_Controller {
       redirect('/profile');
     
     }else
-			$this->profile();
+      echo "asda";
+			//$this->profile();
   }
   
   function image_resize($atr){

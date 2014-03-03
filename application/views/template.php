@@ -73,7 +73,7 @@
   <script type="text/javascript"> 
       
       $('#val').keyup(function (){
-        var input = $('#val').val();    
+        var input = $.trim($('#val').val());    
         $.post('hudobniny/prod_search',{ vst: input},function(out){
           $('#feedback').html(out);
         });

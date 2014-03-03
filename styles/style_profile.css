@@ -64,14 +64,25 @@
 
 aside{
  /* border:5px solid blue;   */
+  position: relative;
   width: 17%;
   float: left;
   height: 95%;
   text-align: center;
+  background: url('../media/img_web/spinner.gif') no-repeat 50% 15%;
 }
 
 
 aside img {
   border: 1px solid black;
+  opacity:0.4;
   
+   
+}
+aside .loader{
+  
+ 
+  width: 50%;
+  height: 50%;
+  background:rgba(255,255,255, .8);
 }
