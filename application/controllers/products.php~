@@ -180,8 +180,7 @@ class products extends CI_Controller {
       $data['prod'] = $this->get_db->get_items('tovar','id',$vstup); 
     }else
       $data['error'] = 'Invalid input';
-    //$data['comments'] = $this->get_db->get_items('comments','id_prod', $vstup);
-		 $data['comments'] = $this->get_db->get_comments($vstup);   
+    $data['comments'] = $this->get_db->get_items('comments','id_prod', $vstup);
     $data['title'] = 'Products detail' ;
     $this->template->write_view('content', 'view_prod_detail', $data); 
     $this->template->render();  

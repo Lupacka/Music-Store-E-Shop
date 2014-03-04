@@ -33,7 +33,7 @@ class profile extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png';
     $config['overwrite'] = TRUE;
     $config['file_name'] = $this->session->userdata('id');
-		$config['max_size']	= '500';
+		$config['max_size']	= '50000';
 		$config['max_width']  = '3000';
 		$config['max_height']  = '3000';
       

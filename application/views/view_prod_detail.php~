@@ -64,13 +64,23 @@ Price:<br>
 
 <div id="comments_frame">
 	asdasd	
+	<?php 
+		print_r($comments);
+		foreach($comments as $row){	
+	?>	
 	<div class="comment">
+		<div class="comment_img">
+		</div>		
 		<div class="comment_header">
-			asdas
+			Added by: <?php echo $row->user;?>
+			<span class="user_rate"></span>
 		</div>		
 		<div class="comment_content">
+			<?php echo $row->comment;?>
 		</div>
-		<div class="comment_admin">
+		<div class="comment_footer">
+			<span><?php echo $row->date;?></span>
 		</div>
 	</div>
+	<?php }; ?>
 </div>

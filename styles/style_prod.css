@@ -257,7 +257,7 @@
 .prod_change_form{
   display: none;
 }
-/*    COMMENTS   */
+/*......................... COMMENTS .....................................   */
 
 #comments_frame{
 	border: red 1px solid;
@@ -276,15 +276,30 @@
 	margin-left: auto;
 	margin-right: auto;	
 	}
-#comments_frame .comment_header{
-	height:25px;
-	border:green 1px solid;
+.comment .comment_img{
+	border: black 1px solid;
+	width: 85px;
+	height: 86px;
+	float: left;
+	vertical-align: center;
 	}
-#comments_frame .comment_content{
-	height:85px;
-	border:blue 1px solid;
+	.comment .comment_img img{
+		width: 85px;
+		}
+	
+.comment .comment_header{
+	height: 25px;
+	border: green 1px solid;
+	width: 378px;
+	margin-left: 19%;
 	}
-#comments_frame .comment_footer{
+.comment .comment_content{
+	height: 105px;
+	border: blue 1px solid;
+	width: 378px;
+	margin-left: 19%;
+	}
+	.comment .comment_footer{
 	height: 18px;
 	border:yellow 1px solid;
 	}

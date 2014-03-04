@@ -27,7 +27,7 @@
       return false;    
    	}
     function get_comments($id) {
-				$this->db->select('comments.*, users_info.img_url');
+				$this->db->select('comments.*,users_info.img_url');
 				$this->db->from('comments');
 				$this->db->join('users_info', 'users_info.id = comments.user_id');
 				$this->db->where('id_prod', $id);
