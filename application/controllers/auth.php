@@ -139,7 +139,7 @@ class Auth extends CI_Controller {
     $this->form_validation->set_rules('pass', 'Password', 'required|trim|xss_clean');
 
     if ($this->form_validation->run()){
-      redirect('');
+      //redirect('');
     }else{
       $this->template->write_view('content', 'view_login'); 
     $this->template->render(); 

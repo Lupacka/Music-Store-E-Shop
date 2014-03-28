@@ -2,6 +2,13 @@ function toggle_elements(elm, spd){
   $(elm).toggle(spd);
 }
 
+function com_rating(index){
+   
+  /*for(var i = 0; i < index ; i++){
+    $("<label>").css("background" , "url('http://hudobniny.g6.cz/media/img_web/one_star_fill.png') no-repeat #FFFFFF;");
+  } */
+}
+
 $(document).ready(function() {
   $('#tester').on('click',function(){
     var formObj = $(this),
@@ -26,7 +33,8 @@ $(document).ready(function() {
       });
    // e.preventDefault(); //Prevent Default action. 
    // e.unbind();
-   });
+   }  
+  );
 });
 
 

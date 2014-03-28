@@ -57,6 +57,8 @@ $route['products'] = "products";
 $route['add_sub'] = "products/add_sub";
 $route['add_new_prod'] = "products/add_new_product";
 
+$route['test'] = "test";
+
 
 
 $route['404_override'] = '';

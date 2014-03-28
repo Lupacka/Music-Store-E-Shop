@@ -268,13 +268,60 @@
 	margin-top: 13%;
 	left: 21%;	
 	}
+#comments_frame #comments_add{
+  border: purple 1px solid;
+  height: 150px;
+  margin-bottom: 25px;
+  padding: 15px;
+  }
+#comments_add textarea {
+	width: 514px;
+	height: 80px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+  resize: none;
+  margin-top: 10px;
+}
+
+#comments_add input[type=submit]{
+  cursor:pointer; 
+  padding:5px 10px; 
+  background:#35b128;  
+  border:1px solid #33842a; 
+  -moz-border-radius: 10px; 
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  color:#f3f3f3;
+  font-size:1.1em;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  margin-top: 8px; 
+ }
+
+#comments_add input[type=checkbox]{
+  display: none;
+}
+
+#comments_add label{
+  background: url("http://hudobniny.g6.cz/media/img_web/one_star.png") no-repeat #FFFFFF;
+  background-size: 25px 25px; 
+  height: 25px;
+  width: 25px;
+  display:inline-block;
+  cursor:pointer;
+  
+}
+
 #comments_frame .comment{
 	width: 468px ;
 	height: auto;
 	border:silver 1px solid;
 	display: block;
 	margin-left: auto;
-	margin-right: auto;	
+	margin-right: auto;
+  margin-bottom: 5px;	
 	}
 .comment .comment_img{
 	border: black 1px solid;
@@ -283,9 +330,9 @@
 	float: left;
 	vertical-align: center;
 	}
-	.comment .comment_img img{
-		width: 85px;
-		}
+.comment .comment_img img{
+	width: 85px;
+	}
 	
 .comment .comment_header{
 	height: 25px;

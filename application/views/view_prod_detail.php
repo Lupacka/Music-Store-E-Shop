@@ -18,6 +18,7 @@ foreach($prod as $row) {
 
 <div id = "prod_header">
 <?php
+   
     echo form_open('/foo');
     if($this->session->userdata('group') == 1 && $this->session->userdata('loged') == 1) 
       //echo "<a style='float:right; cursor: pointer;' onClick='changeElementsProd()')>Change</a>";
@@ -63,7 +64,25 @@ Price:<br>
 </div> 
 
 <div id="comments_frame">
-	asdasd	
+	<div id="comments_add">
+    <?php
+      if($this->session->userdata('loged') == 1){
+        echo form_open('/foo');
+        echo "<span>Nick: ". $this->session->userdata('nick') ."       </span>";
+        
+        echo "<div id='com_rating'>";
+        echo form_label('','1');
+        echo form_checkbox('1','','',"id='1' onclick='com_rating(1);'");
+        echo "</div>";
+        
+        echo form_textarea('comment', '', "maxlength='200' ");
+        echo form_submit('commit','Send');
+        echo form_close();
+      }else{
+        echo "<p id='warning' style='text-align:center;'>You have to be logged to comment</p>";
+      }
+    ?>
+  </div>	
 	<?php 
 		//print_r($comments);
 		foreach($comments as $row){	
