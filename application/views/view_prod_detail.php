@@ -26,6 +26,7 @@ foreach($prod as $row) {
       
     echo "<h2 class='orig_content' style='border-bottom: 1px solid #F1F1F1; font-size: 19px;'>" . $row->name . form_input('rating',$row->rating, "class='prod_change_form'"). "</h2>";
     $pom = 0;
+    echo form_hidden('hidden_rating',$row->rating);
     for($i = 0; $i < 5; $i++ ){
        if($row->rating >= $pom)
          echo "<img src='http://hudobniny.g6.cz/media/img_web/one_star_fill.png' style='width:30px;height:30px;'>";
@@ -33,7 +34,9 @@ foreach($prod as $row) {
          echo "<img src='http://hudobniny.g6.cz/media/img_web/one_star.png' style='width:30px;height:30px;'>"; 
        $pom += 25; 
     }
+    echo "<span style='font-size: 10px; font-style: italic;'>This product was rated <span id='rat_times' style='color:red;'>".$row->rated."</span>x times</span>";
     echo form_input('rating',$row->rating, "class='prod_change_form'");
+    echo form_close();
   }; 
 ?> 
 
@@ -67,16 +70,23 @@ Price:<br>
 	<div id="comments_add">
     <?php
       if($this->session->userdata('loged') == 1){
-        echo form_open('/foo');
-        echo "<span>Nick: ". $this->session->userdata('nick') ."       </span>";
+        echo form_open('products/add_comment_rate');
+        echo "Nick: ". $this->session->userdata('nick');
         
-        echo "<div id='com_rating'>";
-        echo form_label('','1');
-        echo form_checkbox('1','','',"id='1' onclick='com_rating(1);'");
+        echo "<div id='com_rating' style='float:right;'>";
+        for($i = 1; $i <= 5 ; $i++){
+          echo "<span id='".$i."' onclick='com_rating(". $i .");'></span>";
+          echo form_radio("rating",$i*20,'',"id='".$i."_chck'");
+        }
+        
         echo "</div>";
         
-        echo form_textarea('comment', '', "maxlength='200' ");
-        echo form_submit('commit','Send');
+        echo form_textarea('comment', '', "maxlength='200'");
+        echo form_hidden('get',strip_tags($_GET['id']));
+        echo form_hidden('times','');
+        echo form_hidden('rat_origin','');
+        
+        echo form_submit('commit','Send',"id='commit_comment'");
         echo form_close();
       }else{
         echo "<p id='warning' style='text-align:center;'>You have to be logged to comment</p>";

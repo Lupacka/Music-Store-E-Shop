@@ -186,11 +186,47 @@ class products extends CI_Controller {
     $this->template->write_view('content', 'view_prod_detail', $data); 
     $this->template->render();  
   }
+  
+  function add_comment_rate(){
+    $this->load->model('get_db');  
+    $this->load->library('form_validation');
+    $config = array(
+                array(
+                  'field' => 'comment', 'label' => 'Comment', 'rules' => 'required|min_length[3]|max_length[150]|xss_clean|trim'      
+                ));
+                
+   $this->form_validation->set_rules($config); 
+   if ($this->form_validation->run()){
+      $rat = ($this->input->post('rating'))? strip_tags($this->input->post('rating')) : 0;
+      $rat_times = strip_tags($this->input->post('times'));
+      $rat_orig = strip_tags($this->input->post('rat_origin')); 
+       
+      $new_rating = ($rat > 0)? ($rat_orig+$rat) / ($rat_times+1) : $rat_orig; 
+      
+      $data = array( array(
+          'id_prod' => $this->input->post('get'),
+          'user' => $this->session->userdata('nick'),
+          'user_id' => $this->session->userdata('id'),
+          'comment' => strip_tags($this->input->post('comment')),
+          'rate' => $new_rating,
+          'date' => date('Y-m-d H:i:s')       
+      )); 
+     if($this->get_db->add_comment_rate($data,$rat_times+1,$new_rating))
+      redirect('products?id='. $this->input->post('get'));
+     else
+      echo "rpuser";   
+   } 
+    
+  }
+  
+  
   function last_id(){
       $sql = "SELECT id FROM tovar WHERE id = (SELECT MAX(id) FROM tovar)";
       $query = $this->db->query($sql);
       foreach($query->result() as $row)
         return $row->id;
   }
+  
+  
 }
 ?>

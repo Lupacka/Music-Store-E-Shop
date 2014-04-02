@@ -270,7 +270,7 @@
 	}
 #comments_frame #comments_add{
   border: purple 1px solid;
-  height: 150px;
+  height: 165px;
   margin-bottom: 25px;
   padding: 15px;
   }
@@ -300,11 +300,11 @@
   margin-top: 8px; 
  }
 
-#comments_add input[type=checkbox]{
+#comments_add input[type=radio]{
   display: none;
 }
 
-#comments_add label{
+#comments_add span{
   background: url("http://hudobniny.g6.cz/media/img_web/one_star.png") no-repeat #FFFFFF;
   background-size: 25px 25px; 
   height: 25px;

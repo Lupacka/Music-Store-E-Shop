@@ -3,38 +3,67 @@ function toggle_elements(elm, spd){
 }
 
 function com_rating(index){
+  
+  $("#com_rating>span").each(function(){
+    $(this).css("background-image" , "url(http://hudobniny.g6.cz/media/img_web/one_star.png)"); 
+  }); 
+  
+  $('#com_rating>input').each(function(){
+    $(this).attr({checked:""});
+  }); 
    
-  /*for(var i = 0; i < index ; i++){
-    $("<label>").css("background" , "url('http://hudobniny.g6.cz/media/img_web/one_star_fill.png') no-repeat #FFFFFF;");
-  } */
-}
+  for(var i = 1; i <= index ; i++){
+    $('#com_rating > #'+i).css("background-image" , "url(http://hudobniny.g6.cz/media/img_web/one_star_fill.png)"); 
+    //alert(i);
+  } 
+  
+  $('#'+index+'_chck').attr({checked:"checked"});
+};
+
+
 
 $(document).ready(function() {
-  $('#tester').on('click',function(){
-    var formObj = $(this),
-        formurl = formObj.attr('action'),
-        enc = formObj.attr('enctype');
-    var formData = new FormData(this);
+//////////////////////////////////// Products Comments and Ratings //////////////////////////////////////////////////
+  $('input[name=times]').val($('#rat_times').html());
+  $('input[name=rat_origin]').val($('input[name=hidden_rating]').val());
+  
+
+
+////////////////////////////////////  TEST CHAT FUNCTIONs /////////////////////////////////////////////////////  
+  $('#btn').click(function (){
+        if( $('#nick').val() == ""){
+          $('#warning').html('nevyplnili ste Nick!!');
+          return;
+        }  
         
-    $.ajax({
-      url: formurl,
-      type: 'POST',
-      data:  formData,
-      mimeType: enc,
-      /*contentType: false,
-      cache: false,
-      processData: false,  */
-      success: function(test){
-      console.log(test);
-      },
-      error: function(){
-      console.log(2);
-      }          
-      });
-   // e.preventDefault(); //Prevent Default action. 
-   // e.unbind();
-   }  
-  );
+        var timeObj = new Date();
+        var time = timeObj.getHours()+":" + timeObj.getMinutes()+":"+ timeObj.getSeconds();
+        var input = time + " " + $('#nick').val() + ": " + $('#chat').val() + "<br>";  
+        
+        $('#chatframe').append(input);
+        $.post('test/save_com',{ vst: input}, $('#chat').val(""));
+      }); 
+  
+  setInterval(function(){
+          $.post("test/load_history?load=1", function(data){           
+            //$('#chatframe').append(data[1]);
+            var trans = JSON.parse(data);
+            $('#chatframe').html("");
+            $.each(trans, function(i,val){
+              $('#chatframe').append(val+"<br>");
+              //console.log(val);  
+            });
+          });  
+        }, 2500);   
+
+  $(document).keypress(function(event){
+
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+        $('#btn').click();   
+    }
+
+  });   
 });
 
 

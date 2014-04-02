@@ -27,16 +27,24 @@
       return false;    
    	}
     function get_comments($id) {
-				$this->db->select('comments.*, users_info.img_url');
+				$this->db->select('comments.*, users_info.img_url');      
 				$this->db->from('comments');
 				$this->db->join('users_info', 'users_info.id = comments.user_id');
 				$this->db->where('id_prod', $id);
+        $this->db->order_by("date", "desc");
 				$query = $this->db->get();
-				if($query){
+				if($query)
 					return $query->result();
-				  	}
+				  	
     	}
-     
+    function add_comment_rate($data,$times,$new_rate){
+       if(isset($data) && isset($times) && isset($new_rate)){
+        $this->db->insert_batch("comments", $data);
+        $this->db->where('id', $data[0][id_prod]);
+        $this->db->update('tovar' ,array('rating' => $new_rate, 'rated'=>$times ));
+        return true;
+       }
+    }
   
   }    
 ?>

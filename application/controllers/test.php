@@ -25,7 +25,7 @@ class test extends CI_Controller {
       array_push($data, $line);
     }
     fclose($file);
-    if($_GET['load'] == 1)
+    if(isset($_GET['load']) == 1)
       echo json_encode($data);
     else
       return $data;   
