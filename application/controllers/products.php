@@ -10,10 +10,12 @@ class products extends CI_Controller {
 	public function index()
 	{ 
     $id = (!empty($_GET['id']))? strip_tags($_GET['id']): "";
-    if(!$id) 
-		  $this->home();
+    if($id)
+      $this->prod_detail();   
+    else if(isset($_GET['srch']))
+      $this->prod_search();
     else
-      $this->prod_detail();
+      $this->home();
 	}
   function home(){
     $this->load->model("get_db"); 
@@ -219,6 +221,19 @@ class products extends CI_Controller {
     
   }
   
+  function prod_search(){
+    $this->load->model('get_db');
+  
+    $search_prop = strip_tags( str_replace('%20',' ', $this->input->get('srch') )) ;
+    
+    if($search_prop != 0)
+      $data['prod'] = $this->get_db->get_searched_prod($search_prop);
+    
+    
+    $data['title'] = "Search results for '".$search_prop."'"; 
+    $this->template->write_view('content', 'view_prod_search', $data); 
+    $this->template->render(); 
+  }
   
   function last_id(){
       $sql = "SELECT id FROM tovar WHERE id = (SELECT MAX(id) FROM tovar)";

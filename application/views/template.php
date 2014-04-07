@@ -67,13 +67,18 @@
     </div>
     <div id="nav_search">
       <input type="text" id="val" size="42">
-      <img src="<?php echo base_url('media/img_web/search.png')?>">
+      <?php 
+        echo anchor("/products?srch=0","<img src='". base_url('media/img_web/search.png')."'>","id = 'srch_sub'");
+      ?>
       <div id="feedback"></div>
     </div>
   <script type="text/javascript"> 
       
       $('#val').keyup(function (){
-        var input = $.trim($('#val').val());    
+        var input = $.trim($('#val').val());
+        if (input != "")
+          $('#srch_sub').attr('href','/hudobniny/index.php/products?srch=' + input);
+           
         $.post('hudobniny/prod_search',{ vst: input},function(out){
           $('#feedback').html(out);
         });

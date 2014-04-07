@@ -56,7 +56,7 @@
 }
 #prod_frame{
   width: 82%;
-  float: right;
+  /*float: right;  */
   overflow-y: auto;
 }
 /*#prod_frame h2{
@@ -157,11 +157,12 @@
   width: 300px;
   height: 80px;
   position: absolute;
-  margin: 14% 0px 0px 20%;
   visibility: hidden;
   border-radius: 15px;
   z-index: 99;
-  padding: 15px
+  padding: 15px;
+  top:38%;
+  margin-left: 19%;
 }
 
 #new_sub_div form{
@@ -175,7 +176,8 @@
   border: 1px solid #F1F1F1;
   border-radius: 15px;
   height: 530px;
-  margin: 9% 0px 0px 13%;
+  top: 170px;
+  margin-left: 14%;
   position: absolute;
   visibility: hidden;
   width: 620px;
@@ -188,47 +190,54 @@
 
 
 /*...................................... Detail Produktu............................*/
-
-#chain{
+#product_section{
+ /* border: purple 1px solid; */
+  height: auto;
+  
+}
+#chain, #comments_frame_header{
   /*border: 1px solid green;*/
+  background-color: #4a3830;
+  border:2px solid;
+  border-radius: 10px;
   height: 30px;
   margin-bottom: 10px;
+  padding-left: 6px;
 }
 
 #chain, #chain a{
-  color: #404040;
+  color: #FFFFFF;
+  
   font-style: oblique;
   font-size: 15px;
 }
 
 #prod_photo{
   border: 1px solid #E7E7E7;
+  float: left;
   height: 210px;
-  padding-top: 9px;
-  position: absolute;
+  margin-top: -236px;
   text-align: center;
-  width: 210px;
-  margin-top: 22px;
-    
+  width: 210px;   
 }
+
 
 #prod_header{
   /*border: 1px solid blue;*/
   float: right;
   height: 110px;
   width: 780px; 
+  position: relative;
 }
 
 #prod_about{
-  /*border: 1px solid red; */
   color: #696969;
-  float: left;
+  display: block;
   font-size: 1em;
   font-style: oblique;
-  margin-top: 15px;
-  margin-left: 233px;
-  position: static;
-  width: 534px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 522px;
 }
 
 #prod_price{
@@ -238,7 +247,7 @@
   font-size: 16px;
   font-style: oblique;
   height: auto;
-  margin-top: 14px;
+  margin-top: -100px;
   padding: 10px;
   width: 216px;
   }
@@ -258,18 +267,27 @@
   display: none;
 }
 /*......................... COMMENTS .....................................   */
-
+#comments_section{
+  /*border: yellow 1px solid;    */
+  height: auto;
+  margin-top: 15px;
+}
+#comments_frame_header{
+  color: #FFFFFF;
+  
+}
 #comments_frame{
-	border: red 1px solid;
+	/*border: red 1px solid; */
 	width: 564px;
 	height: auto;
 	position: relative;
-	float: left;
-	margin-top: 13%;
-	left: 21%;	
+  display: block;
+  margin-left:auto;
+  margin-right:auto;
+	
 	}
 #comments_frame #comments_add{
-  border: purple 1px solid;
+ /* border: purple 1px solid; */
   height: 165px;
   margin-bottom: 25px;
   padding: 15px;
@@ -305,7 +323,7 @@
 }
 
 #comments_add span{
-  background: url("http://hudobniny.g6.cz/media/img_web/one_star.png") no-repeat #FFFFFF;
+  background: url("http://hudobniny.g6.cz/media/img_web/one_star.png") no-repeat #FFFFFF;  
   background-size: 25px 25px; 
   height: 25px;
   width: 25px;
@@ -315,16 +333,18 @@
 }
 
 #comments_frame .comment{
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 	width: 468px ;
 	height: auto;
 	border:silver 1px solid;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-  margin-bottom: 5px;	
+  margin-bottom: 20px;	
 	}
+
 .comment .comment_img{
-	border: black 1px solid;
+/*	border: black 1px solid; */
 	width: 85px;
 	height: 86px;
 	float: left;
@@ -336,18 +356,24 @@
 	
 .comment .comment_header{
 	height: 25px;
-	border: green 1px solid;
+	border-bottom: silver 1px solid;  
 	width: 378px;
 	margin-left: 19%;
 	}
+.comment .user_rate{
+  width: 75px;
+  float: right;
+  margin-top: 2px;  
+}
 .comment .comment_content{
 	height: 105px;
-	border: blue 1px solid;
+/*	border: blue 1px solid; */
 	width: 378px;
 	margin-left: 19%;
 	}
-	.comment .comment_footer{
+.comment .comment_footer{
 	height: 18px;
-	border:yellow 1px solid;
+  padding-left: 8px;
+	border-top:silver 1px solid;  
 	}
  }

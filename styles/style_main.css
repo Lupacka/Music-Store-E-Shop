@@ -121,7 +121,7 @@
   nav #nav_search input {
     
   }
-  nav #nav_search img{
+  nav #nav_search img{ 
     width:23px;
     vertical-align: sub;
     
@@ -179,7 +179,7 @@
 		margin: 10px;
   	-webkit-box-shadow: 0 0 8px #D0D0D0;	
     box-shadow: 0 0 8px #D0D0D0;
-    height: 902px; 
+  
     padding: 15px;
     /*display: inline-block; /*/  
 	}

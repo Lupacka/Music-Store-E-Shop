@@ -26,6 +26,13 @@
      else
       return false;    
    	}
+    function get_searched_prod($input){
+      $this->db->select('*');
+      $this->db->like('name', $input, 'both');
+      $query = $this->db->get('tovar');
+      return $query->result();    
+    }
+    
     function get_comments($id) {
 				$this->db->select('comments.*, users_info.img_url');      
 				$this->db->from('comments');
