@@ -9,6 +9,13 @@ foreach($prod as $row) { };
     "</span>";  
     ?>
   </div>
+  <div id = "prod_photo">
+  <?php
+    echo "<a href='".base_url($row->img_url)."'><img src='".base_url('/media/prod_photo/'.$row->id.'_thumb.jpg')."' alt='". $row->id."'></a>";
+  ?>  
+  </div> 
+  
+  
   <div id = "prod_header">
   <?php
      
@@ -29,16 +36,16 @@ foreach($prod as $row) { };
       }
       echo "<span style='font-size: 10px; font-style: italic;'>This product was rated <span id='rat_times' style='color:red;'>".$row->rated."</span>x times</span>";
       echo form_input('rating',$row->rating, "class='prod_change_form'");
-      echo form_close();
-      
-   
+      echo form_close(); 
   ?> 
   </div>
+  
   <div id="prod_about">
     <?php
       echo $row->about. form_textarea('newabout',$row->about,"class='prod_change_form'");
     ?>
   </div>
+  
   <div id="prod_price">
     Price:<br> 
     <?php
@@ -50,11 +57,7 @@ foreach($prod as $row) { };
   </div> 
   
   
-  <div id = "prod_photo">
-  <?php
-    echo "<a href='".base_url($row->img_url)."'><img src='".base_url('/media/prod_photo/'.$row->id.'_thumb.jpg')."' alt='". $row->id."'></a>";
-  ?>  
-  </div>   
+    
 </div>
 
 <div id = "comments_section">

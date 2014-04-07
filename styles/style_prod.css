@@ -216,9 +216,10 @@
   border: 1px solid #E7E7E7;
   float: left;
   height: 210px;
-  margin-top: -236px;
+ 
   text-align: center;
-  width: 210px;   
+  width: 210px;
+  position: relative;   
 }
 
 
@@ -270,7 +271,7 @@
 #comments_section{
   /*border: yellow 1px solid;    */
   height: auto;
-  margin-top: 15px;
+  margin-top: 85px;
 }
 #comments_frame_header{
   color: #FFFFFF;
