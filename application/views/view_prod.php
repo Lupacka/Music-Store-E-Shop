@@ -28,13 +28,15 @@
               'price_asc' => 'Price ASC',
               'price_desc' => 'Price DESC'
      );
-     if(isset($sub))
-      echo form_open('/products?cat='.$cat.'&sub='.$sub);
-     else
-      echo form_open('/products?cat='.$cat);
-     echo form_dropdown('sort', $sort);
-     echo form_submit('sort_submit', 'GO');
-     echo form_close();
+     if(isset($cat)){
+       if(isset($sub))
+        echo form_open('/products?cat='.$cat.'&sub='.$sub);
+       else
+        echo form_open('/products?cat='.$cat);
+       echo form_dropdown('sort', $sort);
+       echo form_submit('sort_submit', 'GO');
+       echo form_close();
+     };
   ?>
    <div id="prod_frame_header">
      <p>
@@ -57,8 +59,14 @@
    </div>
    <ul>
    <?php
-    if(empty($prod))
+    if(empty($prod)) {
       echo "<p> No product was found! </p>";
+      echo "<script type='text/javascript'>
+          $(document).ready(function(){
+            $('section').css('height','300px');
+          })
+        </script>"; 
+      }
     else
       foreach($prod as $val){
           echo "<li>";
@@ -92,7 +100,9 @@
     echo form_close();
 ?>
 </div>
-
+<?php
+  if(isset($prod)){
+?>
 <div id="del_prod_div">
   <img src="<?php echo base_url("/media/img_web/close_button_mini.png")?>" alt="krizik" style="float: right; cursor:pointer;" onclick="close_del_prod()">
   <input type=hidden value="" id="temp_hidden_el">
@@ -138,3 +148,4 @@
   ?>
   </table>
 </div>
+<?php };?>
