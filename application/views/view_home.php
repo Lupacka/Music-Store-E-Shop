@@ -12,7 +12,7 @@
             <div class='item_content'>
               ". $row->name ."
             </div>
-            <p>". $row->item_label ."</p>
+            <div class='item_label'>". $row->item_label ."</div>
             <div class='price'>
               <span>". $row->price ." &euro;</span>
               <input type='button'>

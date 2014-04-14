@@ -101,7 +101,7 @@
    height: 25px;
   }
   nav #nav_links{
-    width: 440px; 
+    width: 46%; 
     float: left;
   }
   nav #nav_links a {
@@ -119,7 +119,7 @@
     float: right;
   }
   nav #nav_search input {
-    
+    width: 87% ;
   }
   nav #nav_search img{ 
     width:23px;
@@ -233,11 +233,12 @@
     text-align: center;
   }
   
-  #new_prod_frame p{
+  #new_prod_frame .item_label{
     bottom: 26px;
     font-size: 10px;
-    margin-left: 45px;
     position: absolute;
+    text-align: center;
+    width: inherit;
     
   }
   
@@ -248,13 +249,15 @@
   
   #new_prod_frame li span{
     font-weight: bold;
-    font-size: 14px;
+	 font-size: 14px;
+	 float: left;
     }
   #new_prod_frame li .price {
     bottom: 0px;
     position: absolute;
     vertical-align: middle;
     margin-bottom: 8px;
+    width: inherit;
 }
   #new_prod_frame li input[type=button]{
     background: url("http://hudobniny.g6.cz/media/img_web/cart.png") center no-repeat #000000;
@@ -264,7 +267,6 @@
     margin-top: 1px;
     border: none;
     width: 25px;
-    margin-left: 91px;
     }
   
   #new_prod_frame .new_prod_arrow_left{

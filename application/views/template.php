@@ -66,7 +66,7 @@
       ?>
     </div>
     <div id="nav_search">
-      <input type="text" id="val" size="42">
+      <input type="text" id="val">
       <?php 
         echo anchor("/products?srch=0","<img src='". base_url('media/img_web/search.png')."'>","id = 'srch_sub'");
       ?>

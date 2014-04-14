@@ -113,10 +113,11 @@
   
 }
 #prod_frame li .price {
-  bottom: 0px;
+    bottom: 0px;
   position: absolute;
   vertical-align: middle;
   margin-bottom: 8px;
+  width: inherit;
 }
 #prod_frame li a{
   text-decoration: none;
@@ -131,7 +132,8 @@
 }
 #prod_frame li span{
     font-weight: bold;
-    
+	 font-size: 14px;
+	 float: left;
 }
 
 #prod_frame li input[type=button]{
@@ -141,8 +143,7 @@
     float: right;
     margin-top: 1px;
     border: none;
-    width: 30px;
-    margin-left: 91px;
+    width: 25px;
     }   
 
 .new_sub{
