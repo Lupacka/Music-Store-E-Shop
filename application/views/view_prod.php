@@ -61,11 +61,11 @@
    <?php
     if(empty($prod)) {
       echo "<p> No product was found! </p>";
-      echo "<script type='text/javascript'>
+     /* echo "<script type='text/javascript'>
           $(document).ready(function(){
             $('section').css('height','300px');
           })
-        </script>"; 
+        </script>"; */
       }
     else
       foreach($prod as $val){

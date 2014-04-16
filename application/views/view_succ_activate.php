@@ -1,8 +1,3 @@
-  <script type='text/javascript'>
-          $(document).ready(function(){
-            $('section').css('height','300px');
-          })
-  </script>
   <?php
     if($this->session->userdata('loged') != 1){
       if($suc){

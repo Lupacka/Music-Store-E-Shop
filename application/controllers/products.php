@@ -21,7 +21,6 @@ class products extends CI_Controller {
     $this->load->model("get_db"); 
     
     if(!empty($_GET['cat'])){
-      //$cat = strip_tags($_GET['cat']);
       $data['cat'] = strip_tags($_GET['cat']);
       $data['title'] = ucfirst(str_replace('_',' ', $data['cat']));       
       $data['sub_cat_menu'] = $this->sub_category($this->get_db->get_items('categories', 'main', $data['cat'])); 
@@ -175,18 +174,20 @@ class products extends CI_Controller {
   function prod_detail(){
   
     $this->load->model('get_db');
-    
+    $data['title'] = 'Products detail' ;
     $vstup = strip_tags($this->input->get('id'));
     
     if(is_numeric($vstup)){
-      $data['prod'] = $this->get_db->get_items('tovar','id',$vstup); 
+      $data['prod'] = $this->get_db->get_items('tovar','id',$vstup);
+      $data['comments'] = $this->get_db->get_comments($vstup); 
+      $this->template->write_view('content', 'view_prod_detail', $data); 
+      $this->template->render(); 
     }else
-      $data['error'] = 'Invalid input';
-    //$data['comments'] = $this->get_db->get_items('comments','id_prod', $vstup);
-		 $data['comments'] = $this->get_db->get_comments($vstup);   
-    $data['title'] = 'Products detail' ;
-    $this->template->write_view('content', 'view_prod_detail', $data); 
-    $this->template->render();  
+      redirect('/products');
+    
+		   
+    
+      
   }
   
   function add_comment_rate(){

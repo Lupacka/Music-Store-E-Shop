@@ -23,6 +23,11 @@ function com_rating(index){
 
 
 $(document).ready(function() {
+//////////////////////////////////// Global ///////////////////////////////////////////////////
+  if($('section').height() < 300)
+    $('section').css('height','300px');
+
+
 //////////////////////////////////// Products Comments and Ratings //////////////////////////////////////////////////
   $('input[name=times]').val($('#rat_times').html());
   $('input[name=rat_origin]').val($('input[name=hidden_rating]').val());
