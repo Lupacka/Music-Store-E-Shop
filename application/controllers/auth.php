@@ -118,11 +118,12 @@ class Auth extends CI_Controller {
   function activate_acc() {
   	$this->load->model('registration');
   	$key = strip_tags($this->input->get('key', TRUE));
-  	if($this->registration->activate_acc($key)) {
-				$this->template->write_view('content', 'view_succ_activate'); 
-        $this->template->render();   		
-  		}
-		  	
+  	if($this->registration->activate_acc($key)) 
+		  $data['suc'] = 1;  
+    else
+      $data['suc'] = 0;          
+		$this->template->write_view('content', 'view_succ_activate', $data); 
+    $this->template->render();  	
   	}
 
   function login(){
@@ -139,7 +140,7 @@ class Auth extends CI_Controller {
     $this->form_validation->set_rules('pass', 'Password', 'required|trim|xss_clean');
 
     if ($this->form_validation->run()){
-      //redirect('');
+      redirect('/home');
     }else{
       $this->template->write_view('content', 'view_login'); 
     $this->template->render(); 

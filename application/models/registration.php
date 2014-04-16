@@ -39,7 +39,7 @@
 	  $this->email->subject('Account Activation');
 	  $this->email->message("
     Welcome ". $nick .", 
-    In order to activate your account, you have to activate it. Please click on link bellow: 
+    In order to activate your account, you have to activate it. Please click on  link bellow: 
     ".base_url()."index.php/activate_acc?key=". $act ."
 
     Best regards,
@@ -52,13 +52,11 @@
     $this->db->where('activated', $key);
     $query = $this->db->get('users');
       
-    if($query->num_rows() == 1){
+    if($query->num_rows() >= 1){
       $this->db->where('activated', $key);
-      $this->db->update('users',array('activated'=>'1'));
-      return true;      		
-      }
-    return false;	
-  	}
-
+      if($this->db->update('users',array('activated'=>'1')))
+         return true;     
+  	 }
+    }
 }
 ?>

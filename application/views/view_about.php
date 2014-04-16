@@ -17,6 +17,6 @@
     <ul>
       <li><a href="http://hudobniny.g6.cz/dlc/first_stage.zip">1. Stage</a></li>
       <li><a href="http://hudobniny.g6.cz/dlc/second_stage.zip">2. Stage</a></li>
-      <li><a href="http://hudobniny.g6.cz/dlc/second_stage.zip">3. Stage</a></li>
+      <li><a href="http://hudobniny.g6.cz/dlc/third_stage.zip">3. Stage</a></li>
       <li>4. Stage</li>
     </ul>
