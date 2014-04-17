@@ -4,9 +4,9 @@
 
 #data_frame{
   /*border:5px solid red;   */
+  position: relative;
   width: 75%;
-  float: right; 
-  
+  margin-left: 21%; 
 }
 
 #data_frame h2{
@@ -38,16 +38,12 @@
 #data_frame td a{
   margin-right: 10px;  
 }
-
 #data_frame td a:hover{
   text-decoration: underline;
   cursor: pointer;
 }
-
-
 #userDataChanger{
-  display:none;
-  
+  display:none;  
 }
 
 #data_frame .info{
@@ -61,27 +57,19 @@
  width: 135px;
 }
 
-
 aside{
  /* border:5px solid blue;   */
-  position: relative;
-  width: 17%;
-  float: left;
+  position: absolute;
+  /*float: left;*/
   height: 95%;
-  text-align: center;
-  background: url('../media/img_web/spinner.gif') no-repeat 50% 15%;
+  text-align: center; 
 }
-
 
 aside img {
   border: 1px solid black;
-  opacity:0.4;
-  
-   
+  /*opacity:0.4;  */ 
 }
 aside .loader{
-  
- 
   width: 50%;
   height: 50%;
   background:rgba(255,255,255, .8);

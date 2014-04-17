@@ -6,6 +6,7 @@ class profile extends CI_Controller {
     parent::__construct();
     $this->load->library('template');
     $this->load->model('profile_mod');
+    $this->load->helper(array('form', 'url')); 
     }
 	public function index()
 	{
@@ -26,7 +27,7 @@ class profile extends CI_Controller {
     
   }
   function upload_profile_img(){
-    $this->load->helper('url');
+    //$this->load->helper('url');
     $this->load->library('upload');
     
     $config['upload_path'] = './media/users_photo';

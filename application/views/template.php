@@ -87,7 +87,8 @@
   </nav>
   <section>
     <?= $content ?>
-  <div id="overlay">  
+  <div id="overlay">
+  </div>  
   </section> 
   	
 

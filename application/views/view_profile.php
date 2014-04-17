@@ -1,10 +1,9 @@
 
-  <?php if($this->session->userdata('loged') == 1){?>
+  <?php if($this->session->userdata('loged') == 1){
+    foreach($user_info as $row){ ?>
   <aside>
     <h2><?php echo $title?> picture: </h2>
     <?php
-    
-    foreach($user_info as $row){
       echo "<img src='". $row->img_url ."' alt='". $row->name ."'>";  
     ?> 
     <br>
@@ -13,10 +12,10 @@
     echo form_open_multipart('/upload_profile_img',"id='img_form'");
     echo form_upload('img','',"onchange='checkUpload()' id='up_img' style='width:78px; margin-right: 19px;'");
     echo form_submit('submit', 'Send',"id='up_img_but' style='display: block; margin: 6px 0 0px 50px;' disabled");
-    echo form_button('asd','asdas',"id='tester'");
     echo form_close();
     ?> 
-  </aside> 
+  </aside>
+   
   <div id="data_frame">
     <h2><?php echo $title;?></h2>
     <?php
