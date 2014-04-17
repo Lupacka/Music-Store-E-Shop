@@ -46,16 +46,16 @@
       return $randomString;
      }
      
-    function send_email_newpass($new_pass){
+    function send_email_newpass($new_pass,$nick){
       $this->load->library('email');
   	  $emaill = $this->input->post('email');
   	  $this->email->from('admin@hudobniny.cz', 'hudobniny.cz');
   	  $this->email->to($emaill); 
   	  $this->email->subject('Password recovery');
   	  $this->email->message("
-      Welcome User, 
+      Dear ". $nick .", 
       You send us a request for a new password. 
-      Your new password is: ".$new_pass.".
+      Your new password is: ".$new_pass."
       Please change your password, when you sign in with this new password.
 
 Best regards,
@@ -68,10 +68,11 @@ hudobniny.cz team ");
       $user = $this->find_rec('email', 'users_info');
       foreach($user as $val){
         $id = $val->id;
+        $nick = $val->name;
       }
       $this->load->model('profile_mod');
       if($this->profile_mod->change_pass($new_pass, $id)){
-        $this->send_email_newpass($new_pass);
+        $this->send_email_newpass($new_pass, $nick);
         return true;
         }
     
