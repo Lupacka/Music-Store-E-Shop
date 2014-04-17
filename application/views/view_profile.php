@@ -23,6 +23,8 @@
     if($this->session->userdata('notify'))
       $notify = $this->session->userdata('notify'); 
     echo "<span id='notification'>".$notify . "</span>"; echo validation_errors("<span id='warning' style='margin-top:35px; margin-bottom:0px;'>","</span>");
+    //echo $this->upload->display_errors('<p>', '</p>');
+    
     $this->session->unset_userdata('notify');
     ?>
     <br>

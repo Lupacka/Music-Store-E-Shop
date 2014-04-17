@@ -50,8 +50,8 @@ class profile extends CI_Controller {
       redirect('/profile');
     
     }else
-      //echo "asda";
-			$this->profile();
+      $this->profile();
+      
   }
   
   function image_resize($atr){
