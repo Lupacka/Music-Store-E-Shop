@@ -1,3 +1,8 @@
+<?php
+  function test($input){
+    
+  }
+?>
 <h2>New products</h2> 
     <div id="new_prod_frame">
     <a class="new_prod_arrow_left" href="">prev</a>
@@ -15,7 +20,7 @@
             <div class='item_label'>". $row->item_label ."</div>
             <div class='price'>
               <span>". $row->price ." &euro;</span>
-              <input type='button'>
+              <input type='button' onclick='add_to_cart(". $row->id .")'>
             </div>
           </li>
           ";

@@ -79,7 +79,7 @@
           echo "<p>" . anchor('/products?id='.$val->id,$val->name) . "</p>";
           echo "<div class='price'>
                <span>". $val->price . " &euro;</span>
-               <input type='button'>
+               <input type='button' onclick='add_to_cart(". $val->id .")'>
                </div>
           ";
           echo "</li>";

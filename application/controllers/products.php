@@ -4,7 +4,7 @@ class products extends CI_Controller {
   function __construct(){
     parent::__construct();
     $this->load->helper('url');
-    $this->load->library('template');
+    $this->load->library(array('cart','template'));  
     }
     
 	public function index()
@@ -184,10 +184,6 @@ class products extends CI_Controller {
       $this->template->render(); 
     }else
       redirect('/products');
-    
-		   
-    
-      
   }
   
   function add_comment_rate(){

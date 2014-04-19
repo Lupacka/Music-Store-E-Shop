@@ -173,7 +173,27 @@
   nav #feedback ul a:hover{
     /*background-color: #fbfdfe; */
   }
-  
+  #mini_cart{
+    background: url("../media/img_web/cart_big.png") center no-repeat #000000;
+    border-radius: 0px 7px 7px 0px;
+    height: 38px;
+    left: 50%;
+    position: absolute;
+    width: 50px;
+    margin-left: 523px;
+    margin-top: 16px;
+  }
+  #mini_cart span{
+    background-color: red;
+    border-radius: 15px;
+    color: #F3E8E8;
+    font-size: 12px;
+    position: absolute;
+    right: -3px;
+    text-align: center;
+    top: -12px;
+    width: 15px; 
+  }
   section {
     background-color:white;
 		margin: 10px;

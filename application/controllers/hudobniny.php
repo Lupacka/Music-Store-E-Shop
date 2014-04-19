@@ -3,12 +3,14 @@
 class hudobniny extends CI_Controller {
   function __construct(){
     parent::__construct();
+    $this->load->model("get_db");
     $this->load->helper('url');
-    $this->load->library('template');  
+    $this->load->library(array('cart','template'));  
     }
     
 	public function index()
 	{ 
+     
 		$this->home();
 	}
   
@@ -16,7 +18,7 @@ class hudobniny extends CI_Controller {
     
     $data['title'] = "Welcome";
     
-    $this->load->model("get_db"); 
+    
     $data['news'] = $this->get_db->get_items_new();
     
     $this->template->write_view('content', 'view_home', $data); 
@@ -51,6 +53,24 @@ class hudobniny extends CI_Controller {
        echo "</ul>";
      }  
     }
+  }
+  function add_to_cart(){
+    $id = strip_tags($this->input->post('vst')) ;
+    if(is_numeric($id) && isset($id)){
+      foreach($this->get_db->get_items('tovar','id', $id) as $row)
+        $data = array(
+                  'id'      => $id,
+                  'qty'     => 1,
+                  'price'   => $row->price,
+                  'name'    => $row->name,
+                  'options' => array('sub' => ucfirst(str_replace('_',' ', $row->sub)), 'img' => $row->img_url)
+               ); 
+        
+      $this->cart->insert($data);
+    }
+    echo $this->cart->total_items();
+    //print_r($this->cart->contents());
+      
   }
   
   function reset_pass(){            //pre testing

@@ -20,6 +20,12 @@ function com_rating(index){
   $('#'+index+'_chck').attr({checked:"checked"});
 };
 
+function add_to_cart(id){
+  $.post('hudobniny/add_to_cart',{ vst: id}, function(out){
+    //console.log(out);
+    $("#mini_cart > span").html(out);
+  });
+}
 
 
 $(document).ready(function() {

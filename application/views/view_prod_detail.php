@@ -52,7 +52,7 @@ foreach($prod as $row) { };
       echo "<b class='orig_content' style='float:right;font-size: 25px;'>".$row->price. form_input('newPrice',$row->price,"class='prod_change_form' style='width: 40px;'").",-&euro;</b>"; 
         
     ?><br>
-    <input type="button" value='Add to shopping cart'>
+    <input type="button" value='Add to shopping cart' onclick='add_to_cart("<?php echo $row->id?>")'>
     
   </div> 
   

@@ -1,6 +1,7 @@
 <?php
  $this->load->helper('url');
  $this->load->helper('form');
+ 
 ?>
 
 <!DOCTYPE html>
@@ -85,10 +86,23 @@
       }); 
     </script>  
   </nav>
+  <div id="mini_cart">
+    <?php
+        echo"
+          <span>
+          ";
+          if($this->cart->total_items() > 0) 
+            echo $this->cart->total_items();
+          echo "</span>"; //$this->cart->destroy();
+      ?>
+      
+  </div>
   <section>
     <?= $content ?>
-  <div id="overlay">
-  </div>  
+    
+    <p id="test_cart"></p>
+    <div id="overlay">
+    </div>  
   </section> 
   	
 
