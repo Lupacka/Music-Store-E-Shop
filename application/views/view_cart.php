@@ -27,7 +27,9 @@ td input[type='text']{ width: 32px; height: 22px;}
   <th class="t_price" style="">total price</th>
 </tr>
 <?php
+  $sum = 0;
   foreach ($this->cart->contents() as $key) {
+    $sum += $key{'price'};
     echo "
     <tr id='". $key['rowid'] ."'>
       <td class='t_cross'><img src='../media/img_web/red-x.png' alt='x' id='". $key['rowid'] ."'></td>
@@ -39,11 +41,11 @@ td input[type='text']{ width: 32px; height: 22px;}
       <td class='t_price'><span id='p". $key['id']."'>". $key['price'] ."</span> &euro;</td>
     </tr>";
 }?>
-<tr class="t_sum" colspan="4">
+<tr class="t_sum" colspan="4" style="border-top: black solid 2px;">
   <td></td>
   <td></td>
   <td></td>
-  <td></td>
+  <td class="t_price"><span id="sum"><?php echo $sum;?></span> &euro;</td>
 </tr>
 
 </tbody>

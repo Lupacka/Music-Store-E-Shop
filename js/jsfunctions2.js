@@ -23,7 +23,7 @@ function com_rating(index){
 function add_to_cart(id){
   $.post('hudobniny/add_to_cart',{ vst: id}, function(out){
     //console.log(out);
-    $("#mini_cart > span").html(out);
+    $("#mini_cart > span").html(out).fadeIn("slow");
   });
 }
 
@@ -49,7 +49,14 @@ $(document).ready(function() {
   $("input[name=cart_prod_price]").change(function(){
     var num   = Number($(this).val());
     var id = Number($(this).attr('id'));
-    $('#p'+id).html( Number($('#p'+id).html()) * num );
+    var old_num = Number($('#p'+id).html());
+
+    $('#p'+id).html( old_num * num );
+    
+    if(old_num > 5){
+    // $('#sum').html()
+    }
+
   })
 
 //////////////////////////////////// Products Comments and Ratings //////////////////////////////////////////////////
