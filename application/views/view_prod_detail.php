@@ -5,7 +5,7 @@ foreach($prod as $row) { };
 ?>
   <div id = "chain">
   <?php
-    echo "<span class='chain'>Products / ". anchor('/products?cat=guitars' ,ucfirst($row->category)) ." / ". anchor('/products?cat=guitars&sub='.$row->sub ,ucfirst(str_replace('_',' ', $row->sub))) .
+    echo "<span class='chain'>Products / ". anchor('/products?cat=guitars' ,ucfirst(str_replace('_',' ', $row->category))) ." / ". anchor('/products?cat=guitars&sub='.$row->sub ,ucfirst(str_replace('_',' ', $row->sub))) .
     "</span>";  
     ?>
   </div>

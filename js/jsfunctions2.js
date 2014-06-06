@@ -32,7 +32,25 @@ $(document).ready(function() {
 //////////////////////////////////// Global ///////////////////////////////////////////////////
   if($('section').height() < 300)
     $('section').css('height','300px');
+/////////////////////////////////// Shopping cart /////////////////////////////////
+  $('#mini_cart').click(function(){
+    window.location = 'cart';
+  })
 
+  $('.t_cross > img').click(function(){
+    var tmp = $(this).attr('id');
+    var tmp_number = Number($('#mini_cart_count').html());
+    $.post('cart/delete_from_cart',{rowid: tmp},function(out){
+      $("#"+tmp).remove();
+      $('#mini_cart_count').html(tmp_number-1);
+    }) 
+  })
+
+  $("input[name=cart_prod_price]").change(function(){
+    var num   = Number($(this).val());
+    var id = Number($(this).attr('id'));
+    $('#p'+id).html( Number($('#p'+id).html()) * num );
+  })
 
 //////////////////////////////////// Products Comments and Ratings //////////////////////////////////////////////////
   $('input[name=times]').val($('#rat_times').html());

@@ -182,6 +182,7 @@
     width: 50px;
     margin-left: 523px;
     margin-top: 16px;
+    cursor: pointer;
   }
   #mini_cart span{
     background-color: red;

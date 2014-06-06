@@ -87,15 +87,13 @@
     </script>  
   </nav>
   <div id="mini_cart">
-    <?php
-        echo"
-          <span>
-          ";
-          if($this->cart->total_items() > 0) 
-            echo $this->cart->total_items();
-          echo "</span>"; //$this->cart->destroy();
+    <span id="mini_cart_count">
+      <?php
+        if($this->cart->total_items() > 0) 
+          echo $this->cart->total_items();
+        //$this->cart->destroy();
       ?>
-      
+    </span>  
   </div>
   <section>
     <?= $content ?>
