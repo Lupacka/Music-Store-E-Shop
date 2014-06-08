@@ -196,11 +196,12 @@
     width: 15px; 
   }
   section {
+    
     background-color:white;
 		margin: 10px;
   	-webkit-box-shadow: 0 0 8px #D0D0D0;	
     box-shadow: 0 0 8px #D0D0D0;
-  
+    min-height: 600px;
     padding: 15px;
     /*display: inline-block; /*/  
 	}

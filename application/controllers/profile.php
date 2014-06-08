@@ -4,7 +4,7 @@ class profile extends CI_Controller {
   
   function __construct(){
     parent::__construct();
-    $this->load->library('template');
+    $this->load->library(array('cart','template'));
     $this->load->model('profile_mod');
     $this->load->helper(array('form', 'url')); 
     }

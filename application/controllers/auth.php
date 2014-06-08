@@ -4,7 +4,7 @@ class Auth extends CI_Controller {
   
   function __construct(){
     parent::__construct();
-    $this->load->library('template');
+    $this->load->library(array('cart','template'));
     }
 	function registration(){
     $data['title'] = 'Registration';

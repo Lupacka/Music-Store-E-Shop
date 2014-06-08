@@ -26,36 +26,63 @@ function add_to_cart(id){
     $("#mini_cart > span").html(out).fadeIn("slow");
   });
 }
+function recalculate_chk(num){
+  var tmp = [];
+  $(':radio').each(function(){
+    if($(this).attr("checked")){
+      tmp.push($(".methods > ."+$(this).attr('id')).html());
+     //console.log("."+$(this).attr('id'));
+      tmp.push(Number($(this).val()));
+    }
+  })
+  $('#d_sum').html(tmp[0]);
+  $('#p_sum').html(tmp[2]);
+  $('#d_p').html(tmp[1]+" &euro;");
+  $('#p_p').html(tmp[3]+" &euro;");
+  $('#sum').html( num + tmp[1] + tmp[3] );
+  //console.log(tmp);
+}
 
+function check_out(){
+  $('#chk_out').hide(450);
+  $('.methods, .tr_none, .udaje_email, .udaje , .submit_order').show(450);
+  $('.overview').css({'float':'right','margin-right':'45px'});
+  recalculate_chk(Number($('#sum').html()));
+}
 
 $(document).ready(function() {
-//////////////////////////////////// Global ///////////////////////////////////////////////////
-  if($('section').height() < 300)
-    $('section').css('height','300px');
+
 /////////////////////////////////// Shopping cart /////////////////////////////////
-  $('#mini_cart').click(function(){
+  
+  $('#mini_cart').click(function(){ //redirect
     window.location = 'cart';
   })
 
-  $('.t_cross > img').click(function(){
+  $('.t_cross > img').click(function(){  //delete product from cart
     var tmp = $(this).attr('id');
     var tmp_number = Number($('#mini_cart_count').html());
     $.post('cart/delete_from_cart',{rowid: tmp},function(out){
-      $("#"+tmp).remove();
+
+      $('#sum').html(Number($('#sum').html()) - Number($("#"+tmp+" > .t_price > span").html()));  // recaltulating the sum
+
       $('#mini_cart_count').html(tmp_number-1);
+      $("#"+tmp).remove();
     }) 
   })
 
-  $("input[name=cart_prod_price]").change(function(){
-    var num   = Number($(this).val());
-    var id = Number($(this).attr('id'));
-    var old_num = Number($('#p'+id).html());
+  $("input[name=cart_prod_price]").change(function(){ // recalculating price
+    var num   = Number($(this).val()),
+        id    = $(this).attr('id');
+        pom   = 0;
 
-    $('#p'+id).html( old_num * num );
+    $('#p'+id).html( Number($('#p'+id).html()) * num );
     
-    if(old_num > 5){
-    // $('#sum').html()
-    }
+    $('.t_price > span').each(function(){
+      if($(this).attr('id') != 'sum')
+        pom+= Number($(this).html());
+        //console.log($(this).html());
+    }) 
+    $('#sum').html(pom);  
 
   })
 
