@@ -41,7 +41,7 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
       //if(!empty($user_data))
         //foreach($user_data as $val){
       
-      echo form_open('foo');
+      echo form_open('/order_validation');
       echo "<tr><td>First name:</td><td>".form_input('first')."</td></tr>";
       echo "<tr><td>Last name:</td><td>".form_input('last')."</td></tr>";
       echo "<tr><td>Adress:</td><td>".form_input('adress'/*,$val[0])*/)."</td></tr>";
@@ -58,15 +58,15 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
       <?php
         echo "<tr><td>First name:</td><td>".form_input('d_first')."</td></tr>";
         echo "<tr><td>Last name:</td><td>".form_input('d_last')."</td></tr>";
-        echo "<tr><td>Adress:</td><td>".form_input('D_adress')."</td></tr>";
-        echo "<tr><td>ZIP/Postal code:</td><td>".form_input('D_zip')."</td></tr>";
-        echo"<tr><td>City: </td><td>". form_input('D_city')."</td></tr>";
-        echo"<tr><td>Country:</td><td>". form_input('D_country');
+        echo "<tr><td>Adress:</td><td>".form_input('d_adress')."</td></tr>";
+        echo "<tr><td>ZIP/Postal code:</td><td>".form_input('d_zip')."</td></tr>";
+        echo"<tr><td>City: </td><td>". form_input('d_city')."</td></tr>";
+        echo"<tr><td>Country:</td><td>". form_input('d_country');
         echo "</td></tr></table>";
       ?>
   </div>
   
-  <input type='checkbox' class='d_a' onclick="$('.delivery').toggle(425); $('.d_a').hide(100);"> <span class='d_a'>I'd like to enter a different delivery address.</span>
+  <input type='checkbox' id="chk_d" class='d_a' onclick="$('.delivery').toggle(425); $('.d_a').hide(100);"> <span class='d_a'>I'd like to enter a different delivery address.</span>
 </div>
 
 <div class="overview">
@@ -118,8 +118,8 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
 <h4 style="" class="mark">eMail and phone number</h4>
 <table>
    <?php
-      echo "<tr><td>eMail:</td><td>".form_input('first')."</td></tr>";
-      echo "<tr><td>Phone number:</td><td>".form_input('last')."</td></tr>";
+      echo "<tr><td>eMail:</td><td>".form_input('email')."</td></tr>";
+      echo "<tr><td>Phone number:</td><td>".form_input('phone')."</td></tr>";
    ?>
 </table>
 </div>
