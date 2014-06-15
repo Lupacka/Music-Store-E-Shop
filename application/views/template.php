@@ -26,7 +26,9 @@
   	  $this->load->helper('url');
         if($this->session->userdata('loged')){
           echo "Welcome <b>". ucfirst($this->session->userdata('nick')) . "</b>";
-    		  echo " |".anchor('profile', 'Profile');
+    		  echo " |";
+          if($this->session->userdata('group')) echo anchor('', 'Orders');
+          echo anchor('profile', 'Profile');
     		  echo anchor('/logout', 'Logout', '');
         }else{
   	      

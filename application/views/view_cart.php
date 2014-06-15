@@ -38,16 +38,17 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
     </tr>
     <?php
     $sum = 0;
-      //if(!empty($user_data))
-        //foreach($user_data as $val){
+     
+      foreach($user_data as $val){
+        $adress = explode(',', $val->adress);
       
       echo form_open('/order_validation');
-      echo "<tr><td>First name:</td><td>".form_input('first')."</td></tr>";
-      echo "<tr><td>Last name:</td><td>".form_input('last')."</td></tr>";
-      echo "<tr><td>Adress:</td><td>".form_input('adress'/*,$val[0])*/)."</td></tr>";
-      echo "<tr><td>ZIP/Postal code:</td><td>".form_input('zip'/*, trim($val[1])*/)."</td></tr>";
-      echo"<tr><td>City: </td><td>". form_input('city'/*trim($val[2])*/)."</td></tr>";
-      echo"<tr><td>Country:</td><td>". form_input('country');
+      echo "<tr><td>First name:</td><td>".form_input('first' , $val->name)."</td></tr>";
+      echo "<tr><td>Last name:</td><td>".form_input('last' , $val->surname)."</td></tr>";
+      echo "<tr><td>Adress:</td><td>".form_input('adress', $adress[0])."</td></tr>";
+      echo "<tr><td>ZIP/Postal code:</td><td>".form_input('zip' ,trim($adress[1]))."</td></tr>";
+      echo"<tr><td>City: </td><td>". form_input('city',trim($adress[2]))."</td></tr>";
+      echo"<tr><td>Country:</td><td>". form_input('country', $val->country);
       echo "</td></tr></table>";//};
     ?>
   <div class="delivery" style="display:none;">
@@ -63,6 +64,7 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
         echo"<tr><td>City: </td><td>". form_input('d_city')."</td></tr>";
         echo"<tr><td>Country:</td><td>". form_input('d_country');
         echo "</td></tr></table>";
+      //}
       ?>
   </div>
   
@@ -118,18 +120,19 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
 <h4 style="" class="mark">eMail and phone number</h4>
 <table>
    <?php
-      echo "<tr><td>eMail:</td><td>".form_input('email')."</td></tr>";
-      echo "<tr><td>Phone number:</td><td>".form_input('phone')."</td></tr>";
+      echo "<tr><td>eMail:</td><td>".form_input('email', $val->email)."</td></tr>";
+      echo "<tr><td>Phone number:</td><td>".form_input('phone', $val->p_number)."</td></tr>";
+    };
    ?>
 </table>
 </div>
 <div class="methods">
   <h4 style="" class="mark">Payment and delivery method</h4>
   <?php
-    echo "<label for='ups' class='ups'>UPS (+2.5 &euro;)</label>".form_radio('delivery','2.5',true,"id='ups'");
-    echo "<br><label for='remax' class='remax'>Remax (+3 &euro;)</label>".form_radio('delivery','3','',"id='remax' onclick='recalculate_chk(".$sum.");'");
-    echo "<br><br><label for='bank' class='bank'>Bank transfer</label>".form_radio('cash','0',true,"id='bank'");
-    echo "<br><label for='cash' class='cash'>Cash on delivery (+1 &euro;)</label>".form_radio('cash','1','',"id='cash'");
+    echo "<label for='ups' class='ups'>UPS (+2 &euro;)</label>".form_radio('delivery','2',true,"id='ups' onchange='recalculate_chk(".$sum.")'");
+    echo "<br><label for='remax' class='remax'>Remax (+3 &euro;)</label>".form_radio('delivery','3','',"id='remax' onchange='recalculate_chk(".$sum.")'");
+    echo "<br><br><label for='bank' class='bank'>Bank transfer</label>".form_radio('cash','0',true,"id='bank' onchange='recalculate_chk(".$sum.")'");
+    echo "<br><label for='cash' class='cash'>Cash on delivery (+1 &euro;)</label>".form_radio('cash','1','',"id='cash' onchange='recalculate_chk(".$sum.")'");
   ?>
 </div>
 
@@ -139,6 +142,7 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
 
 
 <?php
+    echo form_hidden('delivery_h','') . form_hidden('cash_h','');
     echo form_submit('','Confirm Order',"class='submit_order'");
     echo form_close();
   ?>

@@ -28,15 +28,21 @@ function add_to_cart(id){
 }
 function recalculate_chk(num){
   var tmp = [];
-  $(':radio').each(function(){
-    if($(this).attr("checked")){
-      tmp.push($(".methods > ."+$(this).attr('id')).html());
-     //console.log("."+$(this).attr('id'));
-      tmp.push(Number($(this).val()));
-    }
-  })
-  $('#d_sum').html(tmp[0]);
+  if(num > 0)
+    $(':radio').each(function(){
+      //console.log(this);
+      if( $(this).is(':checked') ){
+        tmp.push($(".methods > ."+$(this).attr('id')).html());
+       //console.log("."+$(this).attr('id'));
+        tmp.push(Number($(this).val()));
+      }
+    })
+
+  console.log(tmp);
+  $("#d_sum").html(tmp[0]);
+  $("input[name='delivery_h']").prop('value',tmp[0]);
   $('#p_sum').html(tmp[2]);
+  $("input[name='cash_h']").prop('value',tmp[2]);
   $('#d_p').html(tmp[1]+" &euro;");
   $('#p_p').html(tmp[3]+" &euro;");
   $('#sum').html( num + tmp[1] + tmp[3] );
@@ -47,7 +53,7 @@ function check_out(){
   $('#chk_out').hide(450);
   $('.methods, .tr_none, .udaje_email, .udaje , .submit_order').show(450);
   $('.overview').css({'float':'right','margin-right':'45px'});
-  recalculate_chk(Number($('#sum').html()));
+  recalculate_chk(Number($('#sum').html()) , '');
 }
 
 $(document).ready(function() {
@@ -90,7 +96,13 @@ $(document).ready(function() {
   $('input[name=times]').val($('#rat_times').html());
   $('input[name=rat_origin]').val($('input[name=hidden_rating]').val());
   
-
+////////////////////////////////////  Profile factures ////////////////////////////////////////////////////////
+$('.faktury').click(function(){
+  if($(this).css('height') == '20px')
+    $(this).css('height','auto').fadeIn("slow");
+  else
+    $(this).css('height','20px').animate();
+})
 
 ////////////////////////////////////  TEST CHAT FUNCTIONs /////////////////////////////////////////////////////  
   $('#btn').click(function (){

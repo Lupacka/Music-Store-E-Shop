@@ -14,9 +14,14 @@ class profile extends CI_Controller {
 		$this->profile();
 	}
   function profile(){
-    if($this->session->userdata('id')){  
+    if($this->session->userdata('id')){
+      $this->load->model('orders');
+
       $data['title'] = ucfirst($this->session->userdata('nick'))."'s profile";  
       $data['user_info'] = $this->profile_mod->get_user_info($this->session->userdata('id'));
+
+
+      $data['orders'] = $this->orders->getOrders();
     }else
       $data['title'] = "None's profile";
   	
@@ -34,7 +39,7 @@ class profile extends CI_Controller {
 		$config['allowed_types'] = 'gif|jpg|png';
     $config['overwrite'] = TRUE;
     $config['file_name'] = $this->session->userdata('id');
-		$config['max_size']	= '500';
+		$config['max_size']	= '1500';
 		$config['max_width']  = '3000';
 		$config['max_height']  = '3000';
       
@@ -50,6 +55,7 @@ class profile extends CI_Controller {
       redirect('/profile');
     
     }else
+      echo $this->upload->display_errors();
       $this->profile();
       
   }

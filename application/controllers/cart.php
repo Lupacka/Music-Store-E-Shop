@@ -14,21 +14,18 @@ class cart extends CI_Controller {
 
 	function home(){
 		$data['title'] = "Cart";
-		if($this->session->userdata('loged')){
-			$data['user_data'] = $this->get_user_data();
-		}
+		$array = array( (object) array('name'=>'','surname'=>'','adress'=>' , , ', 'email' => '', 'p_number'=>'','country'=>''));
+		$data['user_data'] = ($this->session->userdata('loged') == 1)?  $this->get_user_data() : $array;
+		print_r($data['user_data']); 
+
 		$this->template->write_view('content', 'view_cart', $data); 
     	$this->template->render();  
 	}
 
 	function get_user_data(){
 		$this->load->model('get_db');
-		$tmp = array();
-		foreach($this->get_db->get_items('users_info','id',$this->session->userdata('id')) as $val){
-			array_push($tmp, explode(',', $val->adress));
-
-		}
-		return $tmp;
+		$field = $this->get_db->get_items('users_info','id',$this->session->userdata('id'));
+		return $field;
 	}
 
 	function order_validation(){
@@ -81,6 +78,9 @@ class cart extends CI_Controller {
 	   $this->form_validation->set_rules($config); 
 	   if ($this->form_validation->run()){
 	   	$this->load->model('orders');
+
+
+
 	   	$order = array(
 	   			'first_name' 	=> $this->input->post('first') ,
 	   			'last_name'	 	=> $this->input->post('last') ,
@@ -88,7 +88,8 @@ class cart extends CI_Controller {
 	   			'country' 	 	=> $this->input->post('country') ,
 	   			'email'		 	=> $this->input->post('email'),
 	   			'phone_number'	=> $this->input->post('phone'),
-	   			'added'			=> date('Y-m-d')
+	   			'added'			=> date('Y-m-d'),
+	   			'status'		=> 1
 	   		);	   	
 	   	
 	   	if($this->input->post('d_first')){
@@ -104,6 +105,7 @@ class cart extends CI_Controller {
 	   	$products = array();
 	   	foreach ($this->cart->contents() as $value) {
 	   		array_push($products, array(
+	   			'user'			=> ($this->session->userdata('loged') == 1)? $this->session->userdata('id') : 0,
 	   			'id_details'	=> 0,
 	   			'id_prod'		=> $value['id'],
 	   			'name'			=> $value['name'],
@@ -113,6 +115,21 @@ class cart extends CI_Controller {
 	   			)
 	   		);
 	   	};
+	   	array_push($products, array(
+	   			'id_details'	=> 0,
+	   			'id_prod'		=> 0,
+	   			'user'			=> ($this->session->userdata('loged') == 1)? $this->session->userdata('id') : 0,
+	   			'name'			=> $this->input->post('delivery_h'),
+	   			'qty'			=> 1,
+	   			'price'			=> $this->input->post('delivery'),
+	   			'added'			=> date('Y-m-d') ),
+	   		array('id_details'	=> 0,
+	   			'id_prod'		=> 0,
+	   			'user'			=> ($this->session->userdata('loged') == 1)? $this->session->userdata('id') : 0,
+	   			'name'			=> $this->input->post('cash_h'),
+	   			'qty'			=> 1,
+	   			'price'			=> $this->input->post('cash'),
+	   			'added'			=> date('Y-m-d') ));
 
 	   	if($this->orders->add_order($order,$products)){
 	   		$this->cart->destroy();
@@ -120,9 +137,7 @@ class cart extends CI_Controller {
 	   	}
 	   }else{
 	   	echo validation_errors();
-	   }
-	   
-	   	
+	   } 	
 		
 	}
 

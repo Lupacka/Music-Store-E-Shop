@@ -8,6 +8,7 @@
   		$tmp = $prod;
   		$this->db->select_max('id');
   		$query = $this->db->get('orders_details');
+  		
   		foreach ($query->result() as $key) {
   			for($i = 0; $i < count($tmp); $i++)
   				$tmp[$i]['id_details'] = $key->id;
@@ -17,5 +18,14 @@
 
   	}
 
+  	public function getOrders(){
+  		$this->db->select('orders.*, orders_details.status');        
+		$this->db->from('orders');
+		$this->db->join('orders_details', 'orders_details.id = orders.id_details');
+		$this->db->where('orders.user', $this->session->userdata('id'));
+		$query = $this->db->get();
+		if($query)
+			return $query->result();
+}
 
   }

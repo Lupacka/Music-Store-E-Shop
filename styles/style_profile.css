@@ -74,3 +74,28 @@ aside .loader{
   height: 50%;
   background:rgba(255,255,255, .8);
 }
+
+/*....................facture..........*/
+.faktury{
+  height: 20px;
+  border: solid 1px #CBCAD4;
+  padding: 10px;
+  border-radius: 15px;
+  overflow-y: hidden;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.faktury .header{
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.faktury .header span{ float: right;}
+.faktury .content{ position: relative;}
+.faktury .content table td{width: 180px; text-align: center; }
+.fac_table{ /*border:1px solid red;*/ width: 45%; float:left;}
+.fac_status{ /*border:1px solid blue;*/ width: 100%;}
+.fac_status span{ margin-left: 14px; font-size: 17x; font-weight: bold; color:green;}
+
