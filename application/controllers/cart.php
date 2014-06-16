@@ -140,6 +140,7 @@ class cart extends CI_Controller {
 	   			'added'			=> date('Y-m-d') ));
 
 	   	if($this->orders->add_order($order,$products)){
+	   		$this->orders->send_email($this->input->post(email));
 	   		$this->cart->destroy();
 	   		redirect('/home');
 	   	}

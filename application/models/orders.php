@@ -27,6 +27,39 @@
 		$query = $this->db->get();
 		if($query)
 			return $query->result();
-}
+	}
+
+	function send_email($email, $status = 1, $id){
+		$this->load->library('email');
+		$this->email->from('admin@hudobniny.cz', 'hudobniny.cz');
+		$this->email->to($email); 
+		$this->email->subject('Order #{$id} confirmation');
+
+		switch ($status) {
+			case 1:
+				$this->email->message("
+				Dear customer,
+				we accepted your order, id: {$id}.
+				about further steps or status change, we will inform u via email.
+				
+				Best regards,
+    			hudobniny.cz team 
+				");
+				break;
+			case 2:
+				$this->email->message("
+				Dear customer,
+				we expeded your order, id: {$id}.
+				about further steps or status change, we will inform u via email.
+				
+				Best regards,
+    			hudobniny.cz team 
+				");
+				break;
+
+		}
+		$this->email->send();
+
+	}
 
   }
