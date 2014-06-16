@@ -5,7 +5,8 @@ class cart extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->library(array('cart','template'));  
-		$this->load->helper('form');
+		$this->load->helper(array('form','url'));
+		$this->load->model('orders');
 	}
 
 	public function index(){
@@ -16,12 +17,19 @@ class cart extends CI_Controller {
 		$data['title'] = "Cart";
 		$array = array( (object) array('name'=>'','surname'=>'','adress'=>' , , ', 'email' => '', 'p_number'=>'','country'=>''));
 		$data['user_data'] = ($this->session->userdata('loged') == 1)?  $this->get_user_data() : $array;
-		print_r($data['user_data']); 
+		//print_r($data['user_data']); 
 
 		$this->template->write_view('content', 'view_cart', $data); 
     	$this->template->render();  
 	}
 
+	function admin_orders(){
+		$data['title'] = "Orders";
+		$data['orders'] = $this->orders->getOrders(true);
+
+		$this->template->write_view('content', 'view_adOrders', $data); 
+    	$this->template->render();  
+	}
 	function get_user_data(){
 		$this->load->model('get_db');
 		$field = $this->get_db->get_items('users_info','id',$this->session->userdata('id'));
@@ -147,6 +155,15 @@ class cart extends CI_Controller {
 			'qty'	=> 0
 			);
 		$this->cart->update($data);
+	}
+
+	function update_status(){
+		$id = strip_tags($_POST['id_details']);
+		$status = strip_tags($_POST['status']);
+
+		$this->db->where('id', $id);
+		$this->db->update('orders_details', array('status' => $status));
+
 	}
 
 }

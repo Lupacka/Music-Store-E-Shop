@@ -59,6 +59,7 @@ $route['add_sub'] = "products/add_sub";
 $route['add_new_prod'] = "products/add_new_product";
 $route['cart'] = "cart";
 $route['order_validation'] = "cart/order_validation";
+$route['admin_orders'] = "cart/admin_orders";
 
 $route['test'] = "test";
 

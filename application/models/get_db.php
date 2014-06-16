@@ -2,7 +2,7 @@
 
   class get_db extends CI_Model{
     
-    function get_items($table, $prop, $val){
+    function get_items($table, $prop, $val = ''){
       $query = $this->db->get_where($table, $prop." = '".$val."'");
       return $query->result();
     }

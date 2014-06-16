@@ -27,7 +27,7 @@
         if($this->session->userdata('loged')){
           echo "Welcome <b>". ucfirst($this->session->userdata('nick')) . "</b>";
     		  echo " |";
-          if($this->session->userdata('group')) echo anchor('', 'Orders');
+          if($this->session->userdata('group')) echo anchor('/admin_orders', 'Orders');
           echo anchor('profile', 'Profile');
     		  echo anchor('/logout', 'Logout', '');
         }else{

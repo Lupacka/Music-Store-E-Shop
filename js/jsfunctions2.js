@@ -56,6 +56,23 @@ function check_out(){
   recalculate_chk(Number($('#sum').html()) , '');
 }
 
+function order_chg_status(id,elm){
+  
+  $.post('cart/update_status', {id_details: elm, status: id}, function(){
+    switch(id){
+    case 1: 
+      $('#'+elm).html('Prijata');
+      break;
+    case 2: 
+      $('#'+elm).html('Expedovana');
+      break;
+    case 3: 
+      $('#'+elm).html('Prijata zakaznikom');
+      break;
+  }  
+  })
+}
+
 $(document).ready(function() {
 
 /////////////////////////////////// Shopping cart /////////////////////////////////
@@ -98,10 +115,12 @@ $(document).ready(function() {
   
 ////////////////////////////////////  Profile factures ////////////////////////////////////////////////////////
 $('.faktury').click(function(){
-  if($(this).css('height') == '20px')
+  if($(this).css('height') == '20px'){
     $(this).css('height','auto').fadeIn("slow");
-  else
-    $(this).css('height','20px').animate();
+    $(this).css('cursor', 'initial');
+  }
+  /*else
+    $(this).css('height','20px').animate();*/
 })
 
 ////////////////////////////////////  TEST CHAT FUNCTIONs /////////////////////////////////////////////////////  

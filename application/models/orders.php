@@ -18,11 +18,12 @@
 
   	}
 
-  	public function getOrders(){
+  	public function getOrders($admin){
   		$this->db->select('orders.*, orders_details.status');        
 		$this->db->from('orders');
 		$this->db->join('orders_details', 'orders_details.id = orders.id_details');
-		$this->db->where('orders.user', $this->session->userdata('id'));
+		if(!$admin)
+			$this->db->where('orders.user', $this->session->userdata('id'));
 		$query = $this->db->get();
 		if($query)
 			return $query->result();

@@ -94,8 +94,16 @@ aside .loader{
 }
 .faktury .header span{ float: right;}
 .faktury .content{ position: relative;}
-.faktury .content table td{width: 180px; text-align: center; }
+.faktury .content table td{width: 180px;}
 .fac_table{ /*border:1px solid red;*/ width: 45%; float:left;}
 .fac_status{ /*border:1px solid blue;*/ width: 100%;}
-.fac_status span{ margin-left: 14px; font-size: 17x; font-weight: bold; color:green;}
-
+.fac_status span{font-size: 17x; font-weight: bold; color:green;}
+.fac_status a{
+  background-color: #92E143;
+  border-radius: 14px;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  margin-left: 10px;
+  padding: 12px;}
+.faktury .center{text-align: center;}
