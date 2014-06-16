@@ -18,7 +18,7 @@
 
   	}
 
-  	public function getOrders($admin){
+  	public function getOrders($admin = false){
   		$this->db->select('orders.*, orders_details.status');        
 		$this->db->from('orders');
 		$this->db->join('orders_details', 'orders_details.id = orders.id_details');

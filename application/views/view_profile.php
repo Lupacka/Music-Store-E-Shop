@@ -102,7 +102,7 @@
         if($id != $id_tmp){
           $id_tmp = $id;
           echo "<div class='faktury'>
-            <div class='header'>ID of order -> #". $value->id ."<span> Added: ". $value->added ."</span></div>
+            <div class='header'>ID of order -> #". $value->id_details ."<span> Added: ". $value->added ."</span></div>
             <div class='content'>";
           echo "<div class='fac_table'><table>";
           foreach ($orders as $val) {
