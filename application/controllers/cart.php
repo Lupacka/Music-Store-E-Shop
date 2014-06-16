@@ -142,6 +142,7 @@ class cart extends CI_Controller {
 	   	if($this->orders->add_order($order,$products)){
 	   		$this->orders->send_email($this->input->post(email));
 	   		$this->cart->destroy();
+	   		$data['title'] = "Thank yout page";
 	   		$data['id'] = 'asd';
 	   		$this->template->write_view('content', 'view_orderTY', $data); 
     		$this->template->render();  

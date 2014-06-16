@@ -138,7 +138,7 @@ $('.faktury').click(function(){
         $.post('test/save_com',{ vst: input}, $('#chat').val(""));
       }); 
   
-  setInterval(function(){
+  /*setInterval(function(){
           $.post("test/load_history?load=1", function(data){           
             //$('#chatframe').append(data[1]);
             var trans = JSON.parse(data);
@@ -149,7 +149,7 @@ $('.faktury').click(function(){
             });
           });  
         }, 2500);   
-
+*/
   $(document).keypress(function(event){
 
     var keycode = (event.keyCode ? event.keyCode : event.which);
