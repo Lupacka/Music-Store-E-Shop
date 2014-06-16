@@ -223,7 +223,7 @@ class products extends CI_Controller {
   
     $search_prop = strip_tags( str_replace('%20',' ', $this->input->get('srch') )) ;
     
-    if($search_prop != 0)
+    if($search_prop != '')
       $data['prod'] = $this->get_db->get_searched_prod($search_prop);
     
     

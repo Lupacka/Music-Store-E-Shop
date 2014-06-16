@@ -70,7 +70,12 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
   
   <input type='checkbox' id="chk_d" class='d_a' onclick="$('.delivery').toggle(425); $('.d_a').hide(100);"> <span class='d_a'>I'd like to enter a different delivery address.</span>
 </div>
-
+<?php
+  if($this->cart->total() == 0){
+    echo "<h2>Your basket is empty...</h2>";
+    echo "<img src='../media/img_web/sad.png' style='width: 25%; '>";
+  }else {
+?>
 <div class="overview">
   <table><tbody>
   <tr class="t_header">
@@ -115,7 +120,7 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
   </tbody>
   </table>
 </div>
-
+<?php };?>
 <div class="udaje_email">
 <h4 style="" class="mark">eMail and phone number</h4>
 <table>
@@ -145,5 +150,6 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
     echo form_hidden('delivery_h','') . form_hidden('cash_h','');
     echo form_submit('','Confirm Order',"class='submit_order'");
     echo form_close();
+    if($this->cart->total() != 0)
+      echo "<button id='chk_out' onclick='check_out();''>proceed to checkout</button>";
   ?>
-<button id="chk_out" onclick="check_out();">proceed to checkout</button>

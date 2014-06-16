@@ -142,7 +142,9 @@ class cart extends CI_Controller {
 	   	if($this->orders->add_order($order,$products)){
 	   		$this->orders->send_email($this->input->post(email));
 	   		$this->cart->destroy();
-	   		redirect('/home');
+	   		$data['id'] = 'asd';
+	   		$this->template->write_view('content', 'view_orderTY', $data); 
+    		$this->template->render();  
 	   	}
 	   }else{
 	   	echo validation_errors();

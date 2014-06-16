@@ -29,7 +29,7 @@
 			return $query->result();
 	}
 
-	function send_email($email, $status = 1, $id){
+	function send_email($email, $status = 1, $id = 0){
 		$this->load->library('email');
 		$this->email->from('admin@hudobniny.cz', 'hudobniny.cz');
 		$this->email->to($email); 
@@ -39,7 +39,7 @@
 			case 1:
 				$this->email->message("
 				Dear customer,
-				we accepted your order, id: {$id}.
+				we accepted your order, id: ". $id .".
 				about further steps or status change, we will inform u via email.
 				
 				Best regards,
