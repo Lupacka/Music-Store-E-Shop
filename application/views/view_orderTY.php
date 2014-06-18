@@ -1,2 +1,2 @@
 <p class='warning_message_login'>Thank you!! You have succesfully ordered a products that u have chosen. !<br> Best regards, hudobniny.g6.cz<br>
-<a href='login' class='center' >Proceed to home page</a></p>
+<a href='home' class='center' >Proceed to home page</a></p>

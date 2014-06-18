@@ -25,12 +25,16 @@ table, .udaje_email{border-collapse: collapse; border-spacing: 0; border-color: 
 .udaje_email h4, .methods h4{padding: 9px 0; font-weight: bold;}
 .methods {width: 365px;}
 .submit_order{float:right; margin-right: 45px;}
-
+#order_login{float: right; color: black; float: right; font-weight: 400; font-size: 12px;}
+#order_login #order_log_a{text-decoration: underline; cursor: pointer;}
 /*td .t_price{font-weight: bold; font-size: 5px;}*/ 
 
 </style>
 
-<h2>Your Shopping Basket</h2>
+<h2>Your Shopping Basket 
+<span id='order_login'>Dont have account yet? <a href="registration">Register</a> or <a onclick="toggle_elements('#login_pop', 500);" id='order_log_a'>Log IN!</a></span>
+</h2>
+
 <div class="udaje">
   <table style="float:left;">
     <tr class="mark"> 
