@@ -115,7 +115,7 @@ $(document).ready(function() {
   
 ////////////////////////////////////  Profile factures ////////////////////////////////////////////////////////
 $('.faktury').click(function(){
-  if($(this).css('height') == '20px'){
+  if($(this).css('height') < '25px'){
     $(this).css('height','auto').fadeIn("slow");
     $(this).css('cursor', 'initial');
   }

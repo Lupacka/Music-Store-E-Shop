@@ -82,7 +82,7 @@ class hudobniny extends CI_Controller {
     $pass = $this->registration->make_pass('ahoj', $salt);
     $data = array(
               array(
-                'id' => 4,
+                'id' => 16,
                 'pass' => $pass,
                 'salt' => $salt
               )   
