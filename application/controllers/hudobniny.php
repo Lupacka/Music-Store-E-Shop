@@ -69,7 +69,8 @@ class hudobniny extends CI_Controller {
       $this->cart->insert($data);
     }
     echo $this->cart->total_items();
-    //print_r($this->cart->contents());    
+    //print_r($this->cart->contents());
+    //test test
   }
   function order(){
     $this->template->write_view('content', 'view_cart'); 
